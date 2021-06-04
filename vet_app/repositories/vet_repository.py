@@ -54,4 +54,9 @@ def create(vet):
     vet.id = id
     return vet
 
+def delete_by_id(id):
+    sql = "DELETE FROM vets WHERE id=%s"
+    values = [id]
+    run_sql(sql, values)
+
 

@@ -11,6 +11,9 @@
     <section class = {{vet.id}} vet>
         <p>Name: {{vet.last_name}}, {{vet.first_name}}</p>
         <a href="/vets/{{vet.id}}">See details</a>
+        <form action="/vets/{{vet.id}}/delete" method="post">
+            <button type="submit">delete vet</button>
+        </form>
     </section>
     {% endfor %}
 
