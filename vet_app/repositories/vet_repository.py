@@ -46,4 +46,12 @@ def lists_pets(id):
     return pets
 
 
+def create(vet):
+    sql = 'INSERT INTO vets (first_name, last_name) VALUES (%s, %s) RETURNING *'
+    values = [vet.first_name, vet.last_name]
+    result = run_sql(sql. values)
+    id = result['id']
+    vet.id = id
+    return vet
+
 
