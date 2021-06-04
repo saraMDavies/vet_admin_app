@@ -26,8 +26,8 @@ def new_form():
 
 @vets_blueprint.route('/vets/new', methods = ['POST'])
 def create_vet():
-    first_name = request.form['first_name']
-    last_name = request.form["last_name"]
+    first_name = "Lucy"
+    last_name = "Holder"
     vet = Vet(first_name, last_name)
     vet_repository.create(vet)
 
