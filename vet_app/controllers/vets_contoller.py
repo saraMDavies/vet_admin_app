@@ -1,6 +1,5 @@
 from models.vet import Vet
-from flask import Flask, render_template, redirect, Blueprint
-from werkzeug.wrappers import request
+from flask import Flask, render_template, redirect, Blueprint, request
 from repositories import vet_repository
 
 vets_blueprint = Blueprint("vets", __name__)
@@ -26,8 +25,8 @@ def new_form():
 
 @vets_blueprint.route('/vets/new', methods = ['POST'])
 def create_vet():
-    first_name = "Lucy"
-    last_name = "Holder"
+    first_name = request.form['first']
+    last_name = request.form['last']
     vet = Vet(first_name, last_name)
     vet_repository.create(vet)
 
