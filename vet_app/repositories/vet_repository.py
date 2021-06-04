@@ -18,7 +18,7 @@ def select_by_id(id):
     vet = None
     sql = "SELECT * FROM vets v WHERE v.id = %s"
     values = [id]
-    result = run_sql(sql)
+    result = run_sql(sql, values)[0]
 
     if result is not None:
         vet = Vet(result['first_name'], result['last_name'], result['id'])

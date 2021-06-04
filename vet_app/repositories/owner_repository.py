@@ -6,7 +6,7 @@ def select_by_id(id):
     owner = None
     sql = "SELECT * FROM owners o WHERE o.id = %s"
     values = [id]
-    result = run_sql(sql, values)
+    result = run_sql(sql, values)[0]
 
     if result is not None:
         owner = Owner(result['first_name'], result['last_name'], result['telephone'], result['address'], result['id'])

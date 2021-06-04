@@ -1,4 +1,5 @@
 
+from repositories import owner_repository, vet_repository
 from db.run_sql import run_sql
 from models.pet import Pet
 from models.vet import Vet
@@ -11,6 +12,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        pet = 
+        vet = vet_repository.select_by_id(row['vet_id'])
+        owner = owner_repository.select_by_id(row['owner_id'])
+        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
         pets.append(pet)
     return pets

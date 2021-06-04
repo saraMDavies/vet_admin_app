@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<h2>Pet's registered here</h2>
+<h2>Pets registered here</h2>
 
 <section class="pet list">
     {% for pet in pets %}
     <section class = {{pet.id}} pet>
         <h3>Name: {{pet.name}}</h3>
+        <h3>DOB: {{pet.dob}}</h3>
         <h4>Type: {{pet.animal_category}}</h4>
         <h4>Owner: {{pet.owner.last_name}}, {{pet.owner.first_name}}</h4>
         <h4>Vet: {{pet.vet.last_name}}, {{pet.vet.first_name}}</h4>
