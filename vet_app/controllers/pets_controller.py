@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, Blueprint
+from flask import Flask, render_template, redirect, Blueprint, request
 from repositories import owner_repository, vet_repository, pet_respository
+from models.pet import Pet
 
 pets_blueprint = Blueprint("pets", __name__)
 
@@ -22,3 +23,18 @@ def new_pet_form():
     owners = owner_repository.select_all()
 
     return render_template('pets/new.html', owners = owners, vets = vets)
+
+@pets_blueprint.route('/pets/new', methods = ['POST'])
+def create_pet():
+    name = request.form['name']
+    dob = request.form['dob']
+    animal_category = request.form['animal_category']
+    owner_id = request.form['owner_id']
+    vet_id = request.form['vet_id']
+    notes = ""
+    owner = owner_repository.select_by_id(owner_id)
+    vet = vet_repository.select_by_id(vet_id)
+    pet = Pet(name, dob, animal_category, owner, vet, notes)
+    pet_respository.create(pet)
+
+    return redirect('/pets')

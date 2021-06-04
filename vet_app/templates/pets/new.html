@@ -3,24 +3,24 @@
 {% block content %}
 
 
-<form action="/pets.new" method="post">
+<form action="/pets/new" method="post">
 
     <label for="name">Name</label>
-    <input type="text name="name">
+    <input type="text" name="name">
     <label for="dob">DOB</label>
-    <input type="text name="dob">
+    <input type="date" name="dob">
     <label for="animal_category">Animal category</label>
-    <input type="text name = "animal_category">
+    <input type="text" name = "animal_category">
 
-    <label for="owner">Owner</label>
-    <select name="owner">Owner
+    <label for="owner_id">Owner</label>
+    <select name="owner_id">Owner
         {% for owner in owners %}
         <option value="{{owner.id}}">{{owner.last_name}}, {{owner.first_name}}</option>
         {% endfor %}
     </select>
 
-    <label for="vet">Vet</label>
-    <select name="vet">
+    <label for="vet_d">Vet</label>
+    <select name="vet_id">
         {% for vet in vets %}
         <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
         {% endfor %}

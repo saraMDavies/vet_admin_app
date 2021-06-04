@@ -5,4 +5,5 @@ class Owner:
         self.last_name = last_name
         self.telephone = telephone
         self.address = address
-        
+        self.id = id
+
