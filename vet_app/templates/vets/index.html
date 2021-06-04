@@ -8,11 +8,7 @@
     {% for vet in vets %}
     <section class = {{vet.id}} vet>
         <p>Name: {{vet.last_name}}, {{vet.first_name}}</p>
-        <section class="pet-list">
-            <ul>
-                <li>Hold for pet's list</li>
-            </ul>
-        </section>
+        <a href="/vets/{{vet.id}}">See details</a>
     </section>
     {% endfor %}
 

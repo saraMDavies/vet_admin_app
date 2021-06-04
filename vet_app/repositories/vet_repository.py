@@ -1,6 +1,8 @@
 
 from db.run_sql import run_sql
 from models.vet import Vet
+from repositories import pet_respository, vet_repository, owner_repository
+from models.pet import Pet
 
 
 def select_all():
@@ -24,6 +26,24 @@ def select_by_id(id):
         vet = Vet(result['first_name'], result['last_name'], result['id'])
         
     return vet
+
+def lists_pets(id):
+    pets = []
+    sql = '''
+            SELECT p.*
+            FROM vets v
+            JOIN pets p ON p.vet_id = v.id
+            WHERE v.id = %s
+                '''
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = vet_repository.select_by_id(row['vet_id'])
+        owner = owner_repository.select_by_id(row['owner_id'])
+        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
+        pets.append(pet)
+    return pets
 
 
 

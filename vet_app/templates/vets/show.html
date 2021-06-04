@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{vet.last_name}}, {{vet.first_name}}</h2>
+
+{% if len_pets != 0 %}
+
+    <h3>Pets that {{vet.first_name}} looks after</h3>
+    <ul>
+        {% for pet in pets %}
+        <li>{{pet.name}}: {{pet.animal_category}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>{{vet.first_name}} hasn't been allocated any animals</p>
+
+{% endif %}
+
+{% endblock %}
+
