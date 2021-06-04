@@ -12,6 +12,9 @@
         <h4>Owner: {{pet.owner.last_name}}, {{pet.owner.first_name}}</h4>
         <h4>Vet: {{pet.vet.last_name}}, {{pet.vet.first_name}}</h4>
     </section>
+    <form action="/pets/{{pet.id}}/delete" method="post">
+        <button type="submit">delete pet</button>
+    </form>
     {% endfor %}
 
 </section>

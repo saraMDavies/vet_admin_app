@@ -17,3 +17,8 @@ def select_all():
         pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
         pets.append(pet)
     return pets
+
+def delete_by_id(id):
+    sql = "DELETE FROM pets WHERE id=%s"
+    values = [id]
+    run_sql(sql, values)
