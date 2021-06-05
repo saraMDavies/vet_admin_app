@@ -45,4 +45,41 @@ def create(pet):
     pet.id = id
     return pet
 
+def get_cats():
+    pets = []
+    sql = "SELECT * FROM pets WHERE animal_category = 'Cat'"
+    results = run_sql(sql)
+
+    for row in results:
+        vet = vet_repository.select_by_id(row['vet_id'])
+        owner = owner_repository.select_by_id(row['owner_id'])
+        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
+        pets.append(pet)
+    return pets
+
+
+def get_dogs():
+    pets = []
+    sql = "SELECT * FROM pets WHERE animal_category = 'Dog'"
+    results = run_sql(sql)
+
+    for row in results:
+        vet = vet_repository.select_by_id(row['vet_id'])
+        owner = owner_repository.select_by_id(row['owner_id'])
+        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
+        pets.append(pet)
+    return pets
+
+
+def get_small_animals():
+    pets = []
+    sql = "SELECT * FROM pets WHERE animal_category = 'Small animal'"
+    results = run_sql(sql)
+
+    for row in results:
+        vet = vet_repository.select_by_id(row['vet_id'])
+        owner = owner_repository.select_by_id(row['owner_id'])
+        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
+        pets.append(pet)
+    return pets
 

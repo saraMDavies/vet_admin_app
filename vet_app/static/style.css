@@ -35,6 +35,10 @@ main {
     
 }
 
+.pet-list {
+    padding-top: 20px;
+}
+
 .pet {
     display: flex;
     justify-content: space-evenly;
@@ -47,6 +51,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.add-pet {
+    font-size: xx-large;
+    
 }
 
 
