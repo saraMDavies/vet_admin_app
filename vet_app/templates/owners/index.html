@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% for owner in owners %}
+<h2>{{owner.first_name}} {{owner.last_name}}</h2>
+<a href="/owners/{{owner.id}}">See details</a>
+{% endfor %}
+
+
+
+
+{% endblock %}
+

@@ -7,15 +7,10 @@ from repositories import owner_repository, vet_repository, pet_respository
 owners_blueprint = Blueprint("owners", __name__)
 
 @owners_blueprint.route('/owners')
-def show_all_owners():
-    owners = []
-    sql = "SELECT * FROM owners"
-    results = run_sql(sql)
+def owners_index():
+    owners = owner_repository.select_all()
 
-    for row in results:
-        owner = Owner(row['first_name'], row['last_name'], row['telephone'], row['address'], row['id'])
-        owners.append(owner)
-    return owners
+    return render_template('owners/index.html', owners = owners)
 
 @owners_blueprint.route('/owners/<id>')
 def show_owner(id):
