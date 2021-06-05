@@ -11,6 +11,13 @@ def list_pets():
 
     return render_template('pets/index.html', pets = pets)
 
+@pets_blueprint.route('/pets/<id>')
+def show_pet(id):
+    pet = pet_respository.select_by_id(id)
+
+    return render_template('pets/show.html', pet = pet)
+
+
 @pets_blueprint.route('/pets/<id>/delete', methods = ['POST'])
 def delete_pet(id):
     pet_respository.delete_by_id(id)

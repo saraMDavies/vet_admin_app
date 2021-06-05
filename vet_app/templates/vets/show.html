@@ -9,7 +9,7 @@
     <h3>Pets that {{vet.first_name}} looks after</h3>
     <ul>
         {% for pet in pets %}
-        <li>{{pet.name}}: {{pet.animal_category}}</li>
+        <li><a href="/pets/{{pet.id}}">{{pet.name}}</a>: {{pet.animal_category}}</li>
         {% endfor %}
     </ul>
 {% else %}

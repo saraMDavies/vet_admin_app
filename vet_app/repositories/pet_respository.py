@@ -18,6 +18,19 @@ def select_all():
         pets.append(pet)
     return pets
 
+def select_by_id(id):
+    pet = None
+    sql = "SELECT * FROM pets WHERE id = %s "
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        vet = vet_repository.select_by_id(result['vet_id'])
+        owner = owner_repository.select_by_id(result['owner_id'])
+        pet = Pet(result['name'], result['dob'], result['animal_category'], owner, vet, result['notes'], result['id'])
+    return pet
+
+
 def delete_by_id(id):
     sql = "DELETE FROM pets WHERE id=%s"
     values = [id]
