@@ -14,6 +14,7 @@ def list_pets():
 @pets_blueprint.route('/pets/<id>')
 def show_pet(id):
     pet = pet_respository.select_by_id(id)
+    
 
     return render_template('pets/show.html', pet = pet)
 
