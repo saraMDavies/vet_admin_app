@@ -64,3 +64,9 @@ def create_pet():
     pet_respository.create(pet)
 
     return redirect('/pets')
+
+@pets_blueprint.route('/pets/<id>/edit')
+def edit_form_pet(id):
+    pet = pet_respository.select_by_id(id)
+
+    return render_template('pets/edit.html', pet = pet)
