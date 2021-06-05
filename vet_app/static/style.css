@@ -35,6 +35,22 @@ main {
     
 }
 
+.pet {
+    display: flex;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-color: darkgray;
+   
+}
+
+.pet > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
 footer {
     background-color: dodgerblue;
     color: white;
