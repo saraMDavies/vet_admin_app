@@ -1,0 +1,52 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 20px;
+}
+
+header {
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+header > nav {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+header > h1 {
+    margin-left: 300px;
+}
+
+header > a:link, a:visited {
+    color: white;
+}
+
+main > a:link, a:visited {
+    color: black;
+}
+
+
+
+main {
+    margin-left: 50px;
+    
+}
+
+footer {
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+}
+
+footer > p, h3 {
+    margin-left: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+

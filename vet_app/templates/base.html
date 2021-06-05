@@ -5,25 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vets- homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
+
+        
         <nav>
             <a href="/">Home</a>
             <a href="/vets">Vets database</a>
             <a href="/pets">Pets database</a>
             <a href="/owners">Customer database</a>
         </nav>
-        
         <h1>Vet surgery's name</h1>
+        
     </header>
-    
+    <main>
         {% block content %}
         {% endblock %}
+    </main>
+       
 
     <footer>
-        <p>vet's contact details</p>
-        <p>vet's contact details</p>
+        <h3>Vet surgery's name</h3>
+        <p>123, Main street</p>
+        <p>Animal town</p>
+        <p>AN45 3OL</p>
+        <p>telephone: 0166 456 2332</p>
     </footer>
 </body>
 </html>

@@ -3,10 +3,18 @@
 
 {% block content %}
 
-{% for owner in owners %}
-<h2>{{owner.first_name}} {{owner.last_name}}</h2>
-<a href="/owners/{{owner.id}}">See details</a>
-{% endfor %}
+<h2>Customer database</h2>
+
+
+<ul class="customer-list">
+    {% for owner in owners %}
+    <li class = "list-customer">
+        <a href="/owners/{{owner.id}}">{{owner.last_name}}, {{owner.first_name}}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
 
 
 
