@@ -24,3 +24,14 @@ def select_all():
         owners.append(owner)
     return owners
 
+def select_by_id(id):
+    owner = None
+    sql = "SELECT * FROM owners WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        owner = Owner(result['first_name'], result['last_name'], result['telephone'], result['address'], result['id'])
+    return owner
+
+
