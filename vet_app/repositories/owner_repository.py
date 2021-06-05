@@ -6,16 +6,7 @@ from models.pet import Pet
 from models.vet import Vet
 from repositories import vet_repository
 
-def select_by_id(id):
-    owner = None
-    sql = "SELECT * FROM owners o WHERE o.id = %s"
-    values = [id]
-    result = run_sql(sql, values)[0]
 
-    if result is not None:
-        owner = Owner(result['first_name'], result['last_name'], result['telephone'], result['address'], result['id'])
-        
-    return owner
 
 def select_all():
     owners = []
