@@ -45,9 +45,10 @@ def get_all_pets(id):
 
     for row in results:
         vet = vet_repository.select_by_id(row['vet_id'])
-        owner = select_by_id(row['owne_id'])
+        owner = select_by_id(row['owner_id'])
         pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
-    return pet
+        pets.append(pet)
+    return pets
 
 
 

@@ -10,7 +10,9 @@
 <h3>Pets:</h3>
 
 <ul>
-    <li>hold for pets list</li>
+    {% for pet in pets %}
+    <li><a href="/pets/{{pet.id}}">{{pet.name}}</a></li>
+    {% endfor %}
 </ul>
 
 
