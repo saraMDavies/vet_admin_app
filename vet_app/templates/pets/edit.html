@@ -34,6 +34,8 @@
         {% endfor %}
     </select>
 
+    <label for="notes">Notes:</label>
+    <textarea name="notes" cols="30" rows="5" >{{pet.notes}}</textarea>
 
     <button type="submit">Update {{pet.name}}'s details</button>
 

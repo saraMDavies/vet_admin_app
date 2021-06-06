@@ -80,7 +80,7 @@ def update_pet(id):
     animal_category = request.form['animal_category']
     owner_id = request.form['owner_id']
     vet_id = request.form['vet_id']
-    notes = ""
+    notes = request.form['notes']
     owner = owner_repository.select_by_id(owner_id)
     vet = vet_repository.select_by_id(vet_id)
     pet = Pet(name, dob, animal_category, owner, vet, notes, id)
