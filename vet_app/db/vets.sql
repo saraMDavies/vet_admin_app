@@ -20,7 +20,7 @@ CREATE TABLE owners(
 
 
 CREATE TABLE pets(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(255),
     dob VARCHAR(255),
     animal_category VARCHAR(255),

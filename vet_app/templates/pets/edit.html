@@ -3,7 +3,41 @@
 {% block content %}
 
 
-pet edit page
+<form action="/pets/{{pet.id}}/edit" method="post">
+
+    <label for="name">Name</label>
+    <input type="text" name="name" value="{{pet.name}}">
+    <label for="dob">DOB</label>
+    <input type="date" name="dob">
+    <label for="animal_category">Animal category</label>
+    <input type="text" name = "animal_category" value = "{{pet.animal_category}}">
+
+    <label for="owner_id">Owner</label>
+    <select name="owner_id">Owner
+        {% for owner in owners %}
+            {% if owner.id == pet.owner.id %}
+                <option value="{{owner.id}}" selected>{{owner.last_name}}, {{owner.first_name}}</option>
+            {% else %}
+                <option value="{{owner.id}}">{{owner.last_name}}, {{owner.first_name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+    <label for="vet_d">Vet</label>
+    <select name="vet_id">
+        {% for vet in vets %}
+            {% if vet.id == pet.vet.id %}
+                <option value="{{vet.id}}" selected>{{vet.last_name}}, {{vet.first_name}}</option>
+            {% else %}
+                <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+
+    <button type="submit">Update {{pet.name}}'s details</button>
+
+</form>
 
 
 {% endblock %}
