@@ -84,8 +84,6 @@ def update_pet(id):
     owner = owner_repository.select_by_id(owner_id)
     vet = vet_repository.select_by_id(vet_id)
     pet = Pet(name, dob, animal_category, owner, vet, notes, id)
-    print("HERE")
-    print(owner.id)
     pet_respository.update_pet(pet)
 
     return redirect('/pets')
