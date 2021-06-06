@@ -88,6 +88,6 @@ def get_small_animals():
 
 def update_pet(pet):
     sql = "UPDATE pets SET (name, dob, animal_category, owner_id, vet_id, notes) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [pet.name, pet.dob, pet.animal_category, pet.owner_id, pet.vet_id, pet.notes, pet.id]
+    values = [pet.name, pet.dob, pet.animal_category, pet.owner.id, pet.vet.id, pet.notes, pet.id]
     run_sql(sql, values)
 
