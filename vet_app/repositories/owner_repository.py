@@ -19,17 +19,14 @@ def select_all():
         owners.append(owner)
     return owners
 
-def get_by_letter(letter):
-    print(letter)
-    owners = []
-    sql = "SELECT * FROM owners o WHERE o.last_name ilike %s"
-    values = [letter]
-    results = run_sql(sql)
-    sorted_results = sorted(results, key=lambda k: k['last_name'])
 
-    for row in sorted_results:
-        owner = Owner(row['first_name'], row['last_name'], row['telephone'], row['address'], row['id'])
-        owners.append(owner)
+
+def get_by_letter(letter):
+    owners = []
+    all_owners = select_all()
+    for owner in all_owners:
+        if owner.last_name[0] == letter:
+            owners.append(owner)
     return owners
 
 
