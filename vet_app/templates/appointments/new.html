@@ -4,23 +4,25 @@
 
 new appointment page
 
-<form action="/appointments/new">
+<form action="/appointments/new" method="post">
 <label for="date">Date:</label>
 <input type="date" name="date">
 <label for="time">Time:</label>
 <input type="number" name="time">
-<label for="pet">Pet:</label>
-<select name="pet">
+<label for="pet_id">Pet:</label>
+<select name="pet_id">
     {% for pet in pets %}
     <option value="{{pet.id}}">{{pet.name}}</option>
     {% endfor %}
 </select>
-<label for="vet">Vet:</label>
-<select name="vet">
+<label for="vet_id">Vet:</label>
+<select name="vet_id">
     {% for vet in vets %}
     <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
     {% endfor %}
 </select>
+<label for="description">Notes:</label>
+<textarea name="description" cols="30" rows="3"></textarea>
 
 <button type="submit">Make appointment</button>
 
