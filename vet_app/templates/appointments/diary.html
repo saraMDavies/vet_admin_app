@@ -4,11 +4,20 @@
 
 <h3>Appointment for {{appointment.pet.name}} on {{appointment.date}} with {{appointment.vet.first_name}} {{appointment.vet.last_name}}</h3>
 
+<h2>Other appointments that this vet has</h2>
 {% for appointment in vet_appointments %}
 <p>Date: {{appointment.date}}</p>
 <p>Time: {{appointment.start_time}}</p>
 <p>Pet: {{appointment.pet.name}}</p>
 {% endfor %}
+
+<form action="/appointments/confirm" method="post">
+<label for="time">Time:</label>
+<input type="number" name="time">
+<textarea name="notes"cols="30" rows="10">Appointment notes</textarea>
+
+<button type="submit">Confirm appointment</button>
+</form>
 
 
 {% endblock %}

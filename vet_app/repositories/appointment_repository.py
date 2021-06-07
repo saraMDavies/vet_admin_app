@@ -39,11 +39,12 @@ def select_all():
     sorted_results = sorted(results, key=lambda k: k['appointment_date'])
 
     for row in sorted_results:
-        owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
-        vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
-        pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
-        appointment = Appointment(row['appointment_date'], row['appointment_start_time'], row['appointment_description'], vet, pet, row['appointment_confirmed'], row['appointment_id'])
-        appointments.append(appointment)
+        if row['appointment_confirmed']:
+            owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
+            vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
+            pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
+            appointment = Appointment(row['appointment_date'], row['appointment_start_time'], row['appointment_description'], vet, pet, row['appointment_confirmed'], row['appointment_id'])
+            appointments.append(appointment)
     return appointments
 
 def select_by_id(id):
