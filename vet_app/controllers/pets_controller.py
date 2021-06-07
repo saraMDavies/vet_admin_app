@@ -11,7 +11,7 @@ def list_pets():
 
     return render_template('pets/index.html', pets = pets)
 
-@pets_blueprint.route('/pets/<type>')
+@pets_blueprint.route('/pets/types/<type>')
 def list_by_type(type):
     pets = pet_respository.get_animals_by_type(type)
 
@@ -21,9 +21,10 @@ def list_by_type(type):
 
 @pets_blueprint.route('/pets/<id>')
 def show_pet(id):
+    print("running")
     pet = pet_respository.select_by_id(id)
+    print(pet.name)
     
-
     return render_template('pets/show.html', pet = pet)
 
 
