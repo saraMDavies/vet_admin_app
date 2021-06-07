@@ -34,14 +34,14 @@ print(pet.name)
 vet2 = vet_repository.select_by_id(4)
 pet2 = pet_respository.select_by_id(45)
 
-appointment2 = Appointment(datetime.date(2021, 6, 23), 15, "check up", vet2, pet2)
+appointment2 = Appointment(datetime.date(2021, 6, 23), 15, "check up", vet2, pet2, True)
 appointment_repository.create(appointment2)
 
 vet3 = vet_repository.select_by_id(2)
 pet3 = pet_respository.select_by_id(120)
 
-appointment2 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3)
-appointment_repository.create(appointment2)
+appointment3 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3, True)
+appointment_repository.create(appointment3)
 
 # results = appointment_repository.select_all()
 # for row in results:
@@ -52,6 +52,7 @@ print(sage.name)
 
 sage.vet.id = 9999
 pet_respository.update_pet(sage)
+
 
 
 

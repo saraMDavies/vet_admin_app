@@ -86,7 +86,7 @@ def get_appointments(id):
     sql = '''select a.id as appointment_id, a.date as appointment_date
         , a.start_time as appointment_start_time
         , a.description as appointment_description
-		, a.vet_id, a.pet_id
+		, a.vet_id, a.pet_id, a.confirmed as appointment_confirmed
 		, v.first_name as vet_first_name, v.last_name as vet_last_name
 		, p.name as pet_name, p.dob as pet_dob, p.animal_category as pet_category, p.notes as pet_notes
 		, o.first_name as owner_first_name, o.last_name as owner_last_name, o.telephone as owner_telephone, o.address as owner_address, o.id as owner_id
@@ -103,7 +103,7 @@ def get_appointments(id):
         owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
         vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
         pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
-        appointment = Appointment(row['appointment_date'], row['appointment_start_time'], row['appointment_description'], vet, pet, row['appointment_id'])
+        appointment = Appointment(row['appointment_date'], row['appointment_start_time'], row['appointment_description'], vet, pet, row['appointment_confirmed'], row['appointment_id'])
         appointments.append(appointment)
     return appointments
 

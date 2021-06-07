@@ -37,7 +37,8 @@ CREATE TABLE appointments(
     start_time INT,
     description VARCHAR(255),
     vet_id INT REFERENCES vets(id),
-    pet_id INT REFERENCES pets(id)
+    pet_id INT REFERENCES pets(id),
+    confirmed BOOLEAN
 );
 
 
