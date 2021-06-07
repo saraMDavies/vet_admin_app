@@ -4,5 +4,11 @@
 
 <h3>Appointment for {{appointment.pet.name}} on {{appointment.date}} with {{appointment.vet.first_name}} {{appointment.vet.last_name}}</h3>
 
-Diary!!!!
+{% for appointment in vet_appointments %}
+<p>Date: {{appointment.date}}</p>
+<p>Time: {{appointment.start_time}}</p>
+<p>Pet: {{appointment.pet.name}}</p>
+{% endfor %}
+
+
 {% endblock %}

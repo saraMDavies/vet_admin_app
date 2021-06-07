@@ -28,8 +28,9 @@ def create_new_appointment(pet_id):
     vet = vet_repository.select_by_id(vet_id)
     appointment = Appointment(date, None, None, vet, pet)
     appointment_repository.create(appointment)
+    vet_appointments = vet_repository.get_appointments(vet_id)
 
-    return render_template('/appointments/diary.html', appointment = appointment)
+    return render_template('/appointments/diary.html', appointment = appointment, vet_appointments = vet_appointments)
 
 
 
