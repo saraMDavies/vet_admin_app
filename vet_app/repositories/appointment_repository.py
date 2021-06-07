@@ -20,6 +20,8 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+
+
 def select_all():
     appointments = []
     sql = '''select a.id as appointment_id, a.date as appointment_date
@@ -74,8 +76,13 @@ def select_by_id(id):
 
 
 def update_appointment(appointment):
-    sql = "UPDATE appointments a SET (date, start_time, description, vet_id, pet_id, confirmed) = (%s, %s, %s, %s, %s, %s, %s) WHERE a.id = %s"
+    sql = "UPDATE appointments a SET (date, start_time, description, vet_id, pet_id, confirmed) = (%s, %s, %s, %s, %s, %s) WHERE a.id = %s"
     values = [appointment.date, appointment.start_time, appointment.description, appointment.vet.id, appointment.pet.id, appointment.confirmed, appointment.id]
+    run_sql(sql, values)
+
+def confirm_appointment(appointment):
+    sql = "UPDATE appointments a SET confirmed = TRUE WHERE a.id = %s"
+    values = [appointment.id]
     run_sql(sql, values)
 
 

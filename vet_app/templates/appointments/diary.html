@@ -11,11 +11,10 @@
 <p>Pet: {{appointment.pet.name}}</p>
 {% endfor %}
 
-<form action="/appointments/confirm" method="post">
+<form action="/appointments/confirm/{{appointment.id}}" method="post">
 <label for="time">Time:</label>
 <input type="number" name="time">
-<textarea name="notes"cols="30" rows="10">Appointment notes</textarea>
-
+<textarea name="notes"cols="30" rows="10"></textarea>
 <button type="submit">Confirm appointment</button>
 </form>
 

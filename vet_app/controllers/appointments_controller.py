@@ -33,4 +33,17 @@ def create_new_appointment(pet_id):
     return render_template('/appointments/diary.html', appointment = appointment, vet_appointments = vet_appointments)
 
 
+@appointments_blueprint.route('/appointments/confirm/<app_id>', methods = ['POST'])
+def confirm_appointment(app_id):
+    appointment = appointment_repository.select_by_id(app_id)
+    time = request.form['time']
+    description = request.form['notes']
+    appointment.start_time = time
+    appointment.description = description
+    appointment_repository.update_appointment(appointment)
+    appointment_repository.confirm_appointment(appointment)
+
+    return redirect('/appointments')
+
+
 

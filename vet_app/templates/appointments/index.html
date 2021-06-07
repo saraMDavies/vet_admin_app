@@ -10,8 +10,7 @@
 <h3>Pet: <a href="/pets/{{appointment.pet.id}}">{{appointment.pet.name}}</a></h3>
 <p>Time: {{appointment.start_time}}</p>
 <h3>Vet: {{appointment.vet.first_name}} {{appointment.vet.last_name}}</h3>
-<label for="description">Notes:</label>
-<textarea name="description" cols="30" rows="3">{{appointment.description}}</textarea>
+<p>{{appointment.description}}</p>
 <h3>{{appointment.confirmed}}</h3>
 {% endfor %}
 

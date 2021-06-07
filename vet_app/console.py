@@ -31,6 +31,8 @@ print(pet.name)
 # appointment_repository.create(appointment)
 # print(appointment.description)
 
+appointment_repository.delete
+
 vet2 = vet_repository.select_by_id(4)
 pet2 = pet_respository.select_by_id(45)
 
@@ -42,6 +44,12 @@ pet3 = pet_respository.select_by_id(120)
 
 appointment3 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3, True)
 appointment_repository.create(appointment3)
+
+appointment4 = Appointment(datetime.date(2021, 6, 10), 2, "blood test", vet3, pet3)
+appointment_repository.create(appointment4)
+appointment4.confirmed = True
+appointment_repository.update_appointment(appointment4)
+# appointment_repository.update_appointment(appointment3)
 
 # results = appointment_repository.select_all()
 # for row in results:
