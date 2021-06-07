@@ -1,3 +1,4 @@
+from flask.templating import render_template
 from models.vet import Vet
 from models.pet import Pet
 from models.appointment import Appointment
@@ -75,5 +76,7 @@ def update_appointment(appointment):
     sql = "UPDATE appointments a SET (date, start_time, description, vet_id, pet_id) = (%s, %s, %s, %s, %s, %s) WHERE a.id = %s"
     values = [appointment.date, appointment.start_time, appointment.description, appointment.vet.id, appointment.pet.id, appointment.id]
     run_sql(sql, values)
+
+
 
 

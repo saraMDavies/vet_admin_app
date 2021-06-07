@@ -2,29 +2,20 @@
 
 {% block content %}
 
-new appointment page
 
-<form action="/appointments/new" method="post">
+<form action="/appointments/new/{{pet.id}}" method="post">
 <label for="date">Date:</label>
 <input type="date" name="date">
-<label for="time">Time:</label>
-<input type="number" name="time">
 <label for="pet_id">Pet:</label>
-<select name="pet_id">
-    {% for pet in pets %}
-    <option value="{{pet.id}}">{{pet.name}}</option>
-    {% endfor %}
-</select>
+<input type="text" value = {{pet.name}} readonly name = "pet_id">
 <label for="vet_id">Vet:</label>
 <select name="vet_id">
     {% for vet in vets %}
     <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
     {% endfor %}
 </select>
-<label for="description">Notes:</label>
-<textarea name="description" cols="30" rows="3"></textarea>
 
-<button type="submit">Make appointment</button>
+<button type="submit">Check for vets' availability</button>
 
 </form>
 

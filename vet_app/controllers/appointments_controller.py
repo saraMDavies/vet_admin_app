@@ -13,26 +13,23 @@ def list_all_appointments():
 
     return render_template('appointments/index.html', appointments = appointments)
 
-@appointments_blueprint.route('/appointments/new')
-def new_appointment_form():
+@appointments_blueprint.route('/appointments/new/<pet_id>')
+def new_appointment_form(pet_id):
+    pet = pet_respository.select_by_id(pet_id)
     vets = vet_repository.select_all()
-    pets = pet_respository.select_all()
 
-    return render_template('appointments/new.html', vets = vets, pets = pets)
+    return render_template('appointments/new.html', pet = pet, vets = vets)
 
-@appointments_blueprint.route('/appointments/new', methods = ['POST'])
-def create_new_appointment():
+@appointments_blueprint.route('/appointments/new/<pet_id>', methods = ['POST'])
+def create_new_appointment(pet_id):
     date = request.form['date']
-    time = request.form['time']
-    pet_id = request.form['pet_id']
     vet_id = request.form['vet_id']
-    description = request.form['description']
     pet = pet_respository.select_by_id(pet_id)
     vet = vet_repository.select_by_id(vet_id)
-
-    appointment = Appointment(date, time, description, vet, pet)
+    appointment = Appointment(date, None, None, vet, pet)
     appointment_repository.create(appointment)
 
-    return redirect('/appointments')
+    return render_template('/appointments/diary.html', appointment = appointment)
+
 
 
