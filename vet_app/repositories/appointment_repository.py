@@ -35,8 +35,9 @@ def select_all():
         join owners o on o.id = p.owner_id'''
     
     results = run_sql(sql)
+    sorted_results = sorted(results, key=lambda k: k['appointment_date'])
 
-    for row in results:
+    for row in sorted_results:
         owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
         vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
         pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])

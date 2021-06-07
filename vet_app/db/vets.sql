@@ -34,7 +34,7 @@ CREATE TABLE pets(
 CREATE TABLE appointments(
     id SERIAL NOT NULL PRIMARY KEY,
     date DATE,
-    start_time VARCHAR(255),
+    start_time INT,
     description VARCHAR(255),
     vet_id INT REFERENCES vets(id),
     pet_id INT REFERENCES pets(id)
