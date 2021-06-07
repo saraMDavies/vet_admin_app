@@ -9,6 +9,8 @@ pets_blueprint = Blueprint("pets", __name__)
 def list_pets():
     pets = pet_respository.select_all()
     no_vet_pets = False
+    
+
 
     return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets)
 
@@ -24,8 +26,9 @@ def list_by_type(type):
 def list_novet():
     pets = pet_respository.get_no_vets()
     no_vet_pets = True
+    vets = vet_repository.select_all()
 
-    return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets)
+    return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets, vets = vets)
 
 
 
@@ -88,3 +91,13 @@ def update_pet(id):
     pet_respository.update_pet(pet)
 
     return redirect('/pets')
+
+@pets_blueprint.route('/pets/novet/list', methods = ['POST'])
+def reassign_pets():
+    vet_id = request.form['vet_id']
+    pet_respository.reassign_all_pets(vet_id)
+    
+
+    return redirect('/pets')
+
+

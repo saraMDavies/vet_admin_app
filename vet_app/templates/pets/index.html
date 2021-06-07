@@ -4,9 +4,7 @@
 
 {% block content %}
 
-{% if no_vet_pets %}
-<h2>NO VETS</h2>
-{% endif %}
+
 
 <a class = "add-pet" href="/pets/new">Add new pet</a>
 
@@ -25,6 +23,20 @@
         <a href="/pets/novet/list">No vet assigned</a>
     </li>
 </ul>
+
+{% if no_vet_pets %}
+<form action="/pets/novet/list" method="post">
+<label for="vet_id">Vet:</label>
+<select name="vet_id">
+    {% for vet in vets %}
+    <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
+    {% endfor %}
+</select>
+<button type="submit">Reassign to this Vet</button>
+</form>
+
+
+{% endif %}
 
 <section class="pet-list">
     {% for pet in pets %}

@@ -101,4 +101,10 @@ def get_no_vets():
         pets.append(pet)
     return pets
 
+def reassign_all_pets(vet_id):
+    pets = get_no_vets()
+    for pet in pets:
+        pet.vet.id = vet_id
+        update_pet(pet)
+
 
