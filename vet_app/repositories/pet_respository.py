@@ -46,9 +46,7 @@ def create(pet):
     sql = "INSERT INTO pets (name, dob, animal_category, owner_id, vet_id, notes) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
     values = [pet.name, pet.dob, pet.animal_category, pet.owner.id, pet.vet.id, pet.notes]
     result = run_sql(sql, values)
-    print(sql)
-    print(values)
-    print(result)
+    
 
     id = result[0]['id']
     pet.id = id

@@ -11,13 +11,13 @@ class AppointmentTest(unittest.TestCase):
         self.vet1 = Vet("Anna", "Hall")
         self.owner1 = Owner("Sara", "Humphries", "01234", "21, Millar Crescent")
         self.pet1 = Pet("Squeak", "13/04/2020", "Small animal", self.owner1, self.vet1, "good rat")
-        self.appointment1 = Appointment(datetime.date(2021, 7, 13), datetime.time(13, 00), "check up", self.vet1, self.pet1)
+        self.appointment1 = Appointment(datetime.date(2021, 7, 13), "13:00", "check up", self.vet1, self.pet1)
 
     def test_appointment_has_date(self):
         self.assertEqual(datetime.date(2021, 7, 13), self.appointment1.date)
 
     def test_appointment_has_time(self):
-        self.assertEqual(datetime.time(13, 00), self.appointment1.start_time)
+        self.assertEqual("13:00", self.appointment1.start_time)
     
     def test_has_description(self):
         self.assertEqual("check up", self.appointment1.description)

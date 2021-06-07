@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS pets;
 DROP TABLE  IF EXISTS vets;
 DROP TABLE IF EXISTS owners;
+DROP TABLE IF EXISTS appointment;
 
 
 CREATE TABLE vets(
@@ -27,6 +28,15 @@ CREATE TABLE pets(
     notes VARCHAR(255),
     vet_id INT REFERENCES vets(id),
     owner_id INT REFERENCES owners(id)
+);
+
+CREATE TABLE appointments(
+    id SERIAL NOT NULL PRIMARY KEY,
+    date DATE,
+    start_time VARCHAR(255),
+    description VARCHAR(255),
+    vet_id INT REFERENCES vets(id),
+    pet_id INT REFERENCES pets(id)
 );
 
 
