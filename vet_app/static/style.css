@@ -20,13 +20,11 @@ header > h1 {
     margin-left: 300px;
 }
 
-header > a:link, a:visited {
+header > a:link, header > a:visited {
     color: white;
+    text-decoration: none;
 }
 
-main > a:link, a:visited {
-    color: black;
-}
 
 
 
