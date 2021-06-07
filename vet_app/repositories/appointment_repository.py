@@ -45,4 +45,35 @@ def select_all():
         appointments.append(appointment)
     return appointments
 
+def select_by_id(id):
+    appointment = None
+    sql = '''select a.id as appointment_id, a.date as appointment_date
+        , a.start_time as appointment_start_time
+        , a.description as appointment_description
+		, a.vet_id, a.pet_id
+		, v.first_name as vet_first_name, v.last_name as vet_last_name
+		, p.name as pet_name, p.dob as pet_dob, p.animal_category as pet_category, p.notes as pet_notes
+		, o.first_name as owner_first_name, o.last_name as owner_last_name, o.telephone as owner_telephone, o.address as owner_address, o.id as owner_id
+		 
+        from appointments a
+        join vets v on v.id = a.vet_id
+        join pets p on p.id = a.pet_id
+        join owners o on o.id = p.owner_id
+        where a.id = %s'''
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        owner = Owner(result['owner_first_name'], result['owner_last_name'], result['owner_telephone'], result['owner_address'], result['owner_id'])
+        vet = Vet(result['vet_first_name'], result['vet_last_name'], result['vet_id'])
+        pet = Pet(result['pet_name'], result['pet_dob'], result['pet_category'], owner, vet, result['pet_notes'], result['pet_id'])
+        appointment = Appointment(result['appointment_date'], result['appointment_start_time'], result['appointment_description'], vet, pet, result['appointment_id'])
+    return appointment
+
+
+def update_appointment(appointment):
+    sql = "UPDATE appointments a SET (date, start_time, description, vet_id, pet_id) = (%s, %s, %s, %s, %s, %s) WHERE a.id = %s"
+    values = [appointment.date, appointment.start_time, appointment.description, appointment.vet.id, appointment.pet.id, appointment.id]
+    run_sql(sql, values)
+
 

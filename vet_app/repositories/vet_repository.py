@@ -1,7 +1,7 @@
 
 from db.run_sql import run_sql
 from models.vet import Vet
-from repositories import pet_respository, vet_repository, owner_repository
+from repositories import appointment_repository, pet_respository, vet_repository, owner_repository
 from models.pet import Pet
 
 
@@ -54,9 +54,35 @@ def create(vet):
     vet.id = id
     return vet
 
-def delete_by_id(id):
-    sql = "DELETE FROM vets WHERE id=%s"
-    values = [id]
-    run_sql(sql, values)
+def delete_by_id(vet_id):
+    sql_1 = "SELECT * from pets p WHERE p.vet_id = %s"
+    values = [vet_id]
+
+    results_1 = run_sql(sql_1, values)
+    for row in results_1:
+        pet = pet_respository.select_by_id(row['id'])
+        pet.vet.id = 9999
+        pet_respository.update_pet(pet)
+    
+    sql_2 = "SELECT * from appointments a WHERE a.vet_id = %s"
+    results_2 = run_sql(sql_2, values)
+    for row in results_2:
+        appointment = appointment_repository.select_by_id(row['id'])
+        appointment.vet.id = 9999
+        appointment_repository.update_appointment(appointment)
+    
+    sql_3 = "DELETE FROM vets v WHERE v.id=%s"
+    run_sql(sql_3, values)
+
+
+
+
+
+
+
+    sql_1 = "DELETE FROM pets p WHERE p.vet_id=%s"
+    values = [vet_id]
+    run_sql(sql_1, values)
+
 
 

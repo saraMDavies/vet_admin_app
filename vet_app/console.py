@@ -43,10 +43,15 @@ pet3 = pet_respository.select_by_id(120)
 appointment2 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3)
 appointment_repository.create(appointment2)
 
-results = appointment_repository.select_all()
-for row in results:
-    print(row.__dict__)
+# results = appointment_repository.select_all()
+# for row in results:
+#     print(row.__dict__)
 
+sage = pet_respository.select_by_id(3)
+print(sage.name)
+
+sage.vet.id = 9999
+pet_respository.update_pet(sage)
 
 
 

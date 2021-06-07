@@ -48,6 +48,7 @@ INSERT INTO vets (id, first_name, last_name) VALUES (DEFAULT, 'Bill', 'Osman');
 INSERT INTO vets (id, first_name, last_name) VALUES (DEFAULT, 'Carl', 'Driver');
 INSERT INTO vets (id, first_name, last_name) VALUES (DEFAULT, 'Deena', 'Moore');
 INSERT INTO vets (id, first_name, last_name) VALUES (DEFAULT, 'Kirsty', 'White');
+INSERT INTO vets (id, first_name, last_name) VALUES (9999, 'No vet', 'No vet');
 
 INSERT INTO owners (id, first_name, last_name, telephone, address) VALUES (DEFAULT, 'Debra', 'Newton', '(305) 920-9828', 'Flat 5, 5 Carlton Gardens, London,SW1Y 5AD');
 INSERT INTO owners (id, first_name, last_name, telephone, address) VALUES (DEFAULT, 'Anne', 'Pierce', '(842) 376-8141', '230B High Street, Uxbridge,UB8 1LD');
