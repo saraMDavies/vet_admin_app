@@ -8,14 +8,24 @@ pets_blueprint = Blueprint("pets", __name__)
 @pets_blueprint.route('/pets')
 def list_pets():
     pets = pet_respository.select_all()
+    no_vet_pets = False
 
-    return render_template('pets/index.html', pets = pets)
+    return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets)
 
 @pets_blueprint.route('/pets/types/<type>')
 def list_by_type(type):
     pets = pet_respository.get_animals_by_type(type)
+    no_vet_pets = False
+    
 
-    return render_template('pets/index.html', pets = pets)
+    return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets)
+
+@pets_blueprint.route('/pets/novet/list')
+def list_novet():
+    pets = pet_respository.get_no_vets()
+    no_vet_pets = True
+
+    return render_template('pets/index.html', pets = pets, no_vet_pets = no_vet_pets)
 
 
 

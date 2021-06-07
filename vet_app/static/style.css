@@ -71,6 +71,13 @@ main {
     
 }
 
+.no-vet {
+    font-size: large;
+    color: red;
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
 
 
 footer {

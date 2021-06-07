@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
 
-
-
-
+{% if no_vet_pets %}
+<h2>NO VETS</h2>
+{% endif %}
 
 <a class = "add-pet" href="/pets/new">Add new pet</a>
 
@@ -19,13 +21,16 @@
     <li>
         <a href="/pets/types/Small animal">Small animals</a>
     </li>
+    <li>
+        <a href="/pets/novet/list">No vet assigned</a>
+    </li>
 </ul>
 
 <section class="pet-list">
     {% for pet in pets %}
     <section class = "pet">
         {% if pet.vet.id == 9999 %}
-        <p>No vet</p>
+        <p class = "no-vet">NO VET</p>
         {% else %}
         <p></p>
         {% endif %}
