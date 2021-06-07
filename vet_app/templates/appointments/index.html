@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Appointments</h2>
+
+{% for appointment in appointments %}
+<h3>Date: {{appointment.date}}</h3>
+<h3>Pet: <a href="/pets/{{appointment.pet.id}}">{{appointment.pet.name}}</a></h3>
+<p>Time: {{appointment.start_time}}</p>
+<label for="description">Notes:</label>
+<textarea name="description" cols="30" rows="3">{{appointment.description}}</textarea>
+{% endfor %}
+
+
+{% endblock %}
+

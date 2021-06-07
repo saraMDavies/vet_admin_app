@@ -12,17 +12,23 @@ pet1 = Pet("Squeak", "13/04/2020", "Small animal", owner1, vet1, "good rat")
 vet_repository.create(vet1)
 pet_respository.create(pet1)
 
-pet = pet_respository.select_by_id(13)
-print(pet.name)
+# pet = pet_respository.select_by_id(13)
+# print(pet.name)
 
-appointment = Appointment(datetime.date(2021, 6, 19), "13:00", "check up", vet1, pet1)
-appointment_repository.create(appointment)
-print(appointment.description)
+# appointment = Appointment(datetime.date(2021, 6, 19), "13:00", "check up", vet1, pet1)
+# appointment_repository.create(appointment)
+# print(appointment.description)
 
 vet2 = vet_repository.select_by_id(4)
 pet2 = pet_respository.select_by_id(45)
 
 appointment2 = Appointment(datetime.date(2021, 6, 23), "15:00", "check up", vet2, pet2)
+appointment_repository.create(appointment2)
+
+vet3 = vet_repository.select_by_id(2)
+pet3 = pet_respository.select_by_id(120)
+
+appointment2 = Appointment(datetime.date(2021, 6, 15), "09:00", "vaccinations", vet3, pet3)
 appointment_repository.create(appointment2)
 
 results = appointment_repository.select_all()
