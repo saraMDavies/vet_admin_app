@@ -11,23 +11,13 @@ def list_pets():
 
     return render_template('pets/index.html', pets = pets)
 
-@pets_blueprint.route('/pets/cats')
-def list_cats():
-    pets = pet_respository.get_cats()
+@pets_blueprint.route('/pets/<type>')
+def list_by_type(type):
+    pets = pet_respository.get_animals_by_type(type)
 
     return render_template('pets/index.html', pets = pets)
 
-@pets_blueprint.route('/pets/dogs')
-def list_dogs():
-    pets = pet_respository.get_dogs()
 
-    return render_template('pets/index.html', pets = pets)
-
-@pets_blueprint.route('/pets/small-animals')
-def list_small_animals():
-    pets = pet_respository.get_small_animals()
-
-    return render_template('pets/index.html', pets = pets)
 
 @pets_blueprint.route('/pets/<id>')
 def show_pet(id):

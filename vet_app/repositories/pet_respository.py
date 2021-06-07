@@ -8,13 +8,19 @@ from models.owner import Owner
 
 def select_all():
     pets = []
-    sql = "SELECT * FROM pets"
+    sql = '''select p.id as pet_id, p.name as pet_name, p.dob as pet_dob
+        , p.animal_category as pet_category, p.notes as pet_notes, p.vet_id, p.owner_id
+		, v.first_name as vet_first_name, v.last_name as vet_last_name
+        , o.first_name as owner_first_name, o.last_name as owner_last_name, o.telephone as owner_telephone, o.address as owner_address
+		from pets p
+    join vets v on v.id = p.vet_id
+    join owners o on o.id = p.owner_id'''
     results = run_sql(sql)
 
     for row in results:
-        vet = vet_repository.select_by_id(row['vet_id'])
-        owner = owner_repository.select_by_id(row['owner_id'])
-        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
+        vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
+        owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
+        pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
         pets.append(pet)
     return pets
 
@@ -48,46 +54,30 @@ def create(pet):
     pet.id = id
     return pet
 
-def get_cats():
-    pets = []
-    sql = "SELECT * FROM pets WHERE animal_category = 'Cat'"
-    results = run_sql(sql)
 
-    for row in results:
-        vet = vet_repository.select_by_id(row['vet_id'])
-        owner = owner_repository.select_by_id(row['owner_id'])
-        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
-        pets.append(pet)
-    return pets
-
-
-def get_dogs():
-    pets = []
-    sql = "SELECT * FROM pets WHERE animal_category = 'Dog'"
-    results = run_sql(sql)
-
-    for row in results:
-        vet = vet_repository.select_by_id(row['vet_id'])
-        owner = owner_repository.select_by_id(row['owner_id'])
-        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
-        pets.append(pet)
-    return pets
-
-
-def get_small_animals():
-    pets = []
-    sql = "SELECT * FROM pets WHERE animal_category = 'Small animal'"
-    results = run_sql(sql)
-
-    for row in results:
-        vet = vet_repository.select_by_id(row['vet_id'])
-        owner = owner_repository.select_by_id(row['owner_id'])
-        pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
-        pets.append(pet)
-    return pets
 
 def update_pet(pet):
     sql = "UPDATE pets SET (name, dob, animal_category, owner_id, vet_id, notes) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [pet.name, pet.dob, pet.animal_category, pet.owner.id, pet.vet.id, pet.notes, pet.id]
     run_sql(sql, values)
+
+def get_animals_by_type(type):
+    pets = []
+    sql = '''select p.id as pet_id, p.name as pet_name, p.dob as pet_dob
+        , p.animal_category as pet_category, p.notes as pet_notes, p.vet_id, p.owner_id
+		, v.first_name as vet_first_name, v.last_name as vet_last_name
+        , o.first_name as owner_first_name, o.last_name as owner_last_name, o.telephone as owner_telephone, o.address as owner_address
+		from pets p
+    join vets v on v.id = p.vet_id
+    join owners o on o.id = p.owner_id
+    where p.animal_category = %s'''
+    values = [type]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
+        owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
+        pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
+        pets.append(pet)
+    return pets
 
