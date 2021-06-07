@@ -12,11 +12,27 @@ def select_all():
     owners = []
     sql = 'SELECT * FROM owners'
     results = run_sql(sql)
+    sorted_results = sorted(results, key=lambda k: k['last_name'])
 
-    for row in results:
+    for row in sorted_results:
         owner = Owner(row['first_name'], row['last_name'], row['telephone'], row['address'], row['id'])
         owners.append(owner)
     return owners
+
+def get_by_letter(letter):
+    print(letter)
+    owners = []
+    sql = "SELECT * FROM owners o WHERE o.last_name ilike %s"
+    values = [letter]
+    results = run_sql(sql)
+    sorted_results = sorted(results, key=lambda k: k['last_name'])
+
+    for row in sorted_results:
+        owner = Owner(row['first_name'], row['last_name'], row['telephone'], row['address'], row['id'])
+        owners.append(owner)
+    return owners
+
+
 
 def select_by_id(id):
     owner = None

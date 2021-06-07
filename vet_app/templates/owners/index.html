@@ -5,6 +5,21 @@
 
 <h2>Customer database</h2>
 
+{% for letter in alphabet %}
+<a href="/owners/alpha/{{letter}}">{{letter}}</a>
+{% endfor %}
+
+
+<!-- <form action="/owners/alpha/?letter=B">
+    <label for="letter">Select letter</label>
+    <input type="text" name="letter">
+
+    <button type = "submit">Search</button>
+
+</form> -->
+
+
+
 
 <ul class="customer-list">
     {% for owner in owners %}
