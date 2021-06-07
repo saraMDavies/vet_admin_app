@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+new appointment page
+
+<form action="/appointments/new">
+<label for="date">Date:</label>
+<input type="date" name="date">
+<label for="time">Time:</label>
+<input type="number" name="time">
+<label for="pet">Pet:</label>
+<select name="pet">
+    {% for pet in pets %}
+    <option value="{{pet.id}}">{{pet.name}}</option>
+    {% endfor %}
+</select>
+<label for="vet">Vet:</label>
+<select name="vet">
+    {% for vet in vets %}
+    <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
+    {% endfor %}
+</select>
+
+<button type="submit">Make appointment</button>
+
+</form>
+
+{% endblock %}

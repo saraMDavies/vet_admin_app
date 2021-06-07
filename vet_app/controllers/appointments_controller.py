@@ -12,3 +12,10 @@ def list_all_appointments():
 
     return render_template('appointments/index.html', appointments = appointments)
 
+@appointments_blueprint.route('/appointments/new')
+def new_appointment_form():
+    vets = vet_repository.select_all()
+    pets = pet_respository.select_all()
+
+    return render_template('appointments/new.html', vets = vets, pets = pets)
+
