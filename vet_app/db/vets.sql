@@ -1,8 +1,9 @@
 
+DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS pets;
 DROP TABLE  IF EXISTS vets;
 DROP TABLE IF EXISTS owners;
-DROP TABLE IF EXISTS appointment;
+
 
 
 CREATE TABLE vets(
