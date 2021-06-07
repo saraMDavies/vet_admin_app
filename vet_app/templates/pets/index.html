@@ -24,13 +24,15 @@
 <section class="pet-list">
     {% for pet in pets %}
     <section class = "pet">
-        <h4><a href="/pets/{{pet.id}}">{{pet.name}}</a></h4>
+        
+        <h3 class="pet-name"><a href="/pets/{{pet.id}}">{{pet.name}}</a></h3>
         <h4>Type: {{pet.animal_category}}</h4>
-        <h4>Owner: <a href="/owners/{{pet.owner.id}}">{{pet.owner.last_name}}, {{pet.owner.first_name}}</a></h4>
+       <h4>Owner: <a href="/owners/{{pet.owner.id}}">{{pet.owner.last_name}}, {{pet.owner.first_name}}</a></h4>
         <h4>Vet: <a href="/vets/{{pet.vet.id}}">{{pet.vet.last_name}}, {{pet.vet.first_name}}</a></h4>
         <form action="/pets/{{pet.id}}/delete" method="post">
             <button type="submit">delete {{pet.name}}</button>
         </form>
+    
     </section>
     
     {% endfor %}

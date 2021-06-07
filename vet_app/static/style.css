@@ -35,15 +35,24 @@ main {
     
 }
 
+.home-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.home-options {
+    
+}
+
 .pet-list {
     padding-top: 20px;
 }
 
 .pet {
-    display: flex;
-    justify-content: space-evenly;
-    border-style: solid;
+    display: grid;
+    grid-template-columns: 150px 200px 300px 200px 200px;
     border-color: darkgray;
+    border-style: solid;
    
 }
 
@@ -52,6 +61,12 @@ main {
     flex-direction: column;
     justify-content: center;
 }
+
+.pet-name {
+    padding-left: 20px;
+    
+}
+
 
 .add-pet {
     font-size: xx-large;
@@ -66,7 +81,7 @@ footer {
     padding: 10px;
 }
 
-footer > p, h3 {
+footer > p, footer > h3 {
     margin-left: 50px;
     margin-top: 5px;
     margin-bottom: 5px;
