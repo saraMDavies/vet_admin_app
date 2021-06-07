@@ -16,8 +16,9 @@ def select_all():
     join vets v on v.id = p.vet_id
     join owners o on o.id = p.owner_id'''
     results = run_sql(sql)
+    sorted_results = sorted(results, key=lambda k: k['pet_name'])
 
-    for row in results:
+    for row in sorted_results:
         vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
         owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
         pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
@@ -71,8 +72,9 @@ def get_animals_by_type(type):
     where p.animal_category = %s'''
     values = [type]
     results = run_sql(sql, values)
+    sorted_results = sorted(results, key=lambda k: k['pet_name'])
 
-    for row in results:
+    for row in sorted_results:
         vet = Vet(row['vet_first_name'], row['vet_last_name'], row['vet_id'])
         owner = Owner(row['owner_first_name'], row['owner_last_name'], row['owner_telephone'], row['owner_address'], row['owner_id'])
         pet = Pet(row['pet_name'], row['pet_dob'], row['pet_category'], owner, vet, row['pet_notes'], row['pet_id'])
