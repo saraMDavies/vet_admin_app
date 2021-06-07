@@ -48,7 +48,7 @@ main {
 
 .pet {
     display: grid;
-    grid-template-columns: 150px 200px 300px 200px 200px;
+    grid-template-columns: 100px 150px 200px 300px 200px 200px;
     border-color: darkgray;
     border-style: solid;
    
