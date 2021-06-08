@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h2>New customer form</h2>
+
+<form action="/customers/new" method="post">
+<label for="first_name">First name</label>
+<input type="text", name="first_name">
+<label for="last_name">Last name</label>
+<input type="text name="last_name">
+<label for="telephone">Telephone</label>
+<input type="text" name='telephone'>
+<label for="address">Address</label>
+<textarea name="address"cols="30" rows="5"></textarea>
+<button type="submit">Create new custmer</button>
+</form>
+
+{% endblock %}
+

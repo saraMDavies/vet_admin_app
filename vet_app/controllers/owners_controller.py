@@ -36,3 +36,8 @@ def show_owner(id):
     pets = owner_repository.get_all_pets(id)
 
     return render_template('owners/show.html', owner = owner, pets = pets)
+
+@owners_blueprint.route('/owners/new')
+def new_owner_form():
+
+    return render_template('owners/new.html')
