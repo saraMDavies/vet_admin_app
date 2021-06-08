@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from flask import Flask, render_template, redirect, Blueprint, request
 from repositories import owner_repository, vet_repository, pet_respository, appointment_repository
 from models.appointment import Appointment
+from models.calendar import Calendar
 
 
 appointments_blueprint = Blueprint("appointments", __name__)
@@ -52,6 +53,14 @@ def confirm_appointment(app_id):
     appointment_repository.confirm_appointment(appointment)
 
     return redirect('/appointments')
+
+@appointments_blueprint.route('/appointments/calendar')
+def appointments_calendar():
+    appointments = appointment_repository.select_all()
+    calendar = Calendar(appointments)
+
+    return render_template('appointments/calendar.html', calendar = calendar)
+    
 
 
 
