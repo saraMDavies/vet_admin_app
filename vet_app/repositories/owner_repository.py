@@ -6,7 +6,14 @@ from models.pet import Pet
 from models.vet import Vet
 from repositories import vet_repository
 
+def create(owner):
+    sql = "INSERT INTO owners (first_name, last_name, telephone, address) VALUES (%s, %s, %s, %s) RETURNING *"
+    values = [owner.first_name, owner.last_name, owner.telephone, owner.address]
+    result = run_sql(sql, values)
+    id = result[0]['id']
+    owner.id = id
 
+    return owner
 
 def select_all():
     owners = []

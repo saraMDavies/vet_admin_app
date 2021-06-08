@@ -41,3 +41,14 @@ def show_owner(id):
 def new_owner_form():
 
     return render_template('owners/new.html')
+
+@owners_blueprint.route('/customers/new', methods = ['POST'])
+def create_new_owner():
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    telephone = request.form['telephone']
+    address = request.form['address']
+    owner = Owner(first_name, last_name, telephone, address)
+    owner_repository.create(owner)
+
+    return redirect('/owners')
