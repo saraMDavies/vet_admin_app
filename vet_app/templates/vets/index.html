@@ -4,20 +4,24 @@
 
 <h2>Vets working here</h2>
 
-<a href="/vets/new">Add new vet</a>
 
-<section class="vet list">
+
+<section class="vet-list">
     {% for vet in vets %}
-    <section class = {{vet.id}} vet>
-        <p>Name: {{vet.last_name}}, {{vet.first_name}}</p>
-        <a href="/vets/{{vet.id}}">See details</a>
+    {% if vet.id != 9999 %}
+    <section class="vet">
         <form action="/vets/{{vet.id}}/delete" method="post">
             <button type="submit">delete vet</button>
         </form>
+        <h3><a href="/vets/{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</a></h3>
+        <a class="button-link" href="/">View {{vet.first_name}}'s diary</a>
     </section>
+    {% endif %}
     {% endfor %}
 
 </section>
+
+<a id="add-vet-button" class="button-link" href="/vets/new">Add new vet</a>
 
 
 

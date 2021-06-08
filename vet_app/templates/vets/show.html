@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="edit-nav">
+    <h2>{{vet.last_name}}, {{vet.first_name}}</h2>
+    <a href="/vets/{{vet.id}}/edit">Edit {{vet.first_name}}'s deatils</a>
+</div>
 
-<h2>{{vet.last_name}}, {{vet.first_name}}</h2>
 
 {% if len_pets != 0 %}
 

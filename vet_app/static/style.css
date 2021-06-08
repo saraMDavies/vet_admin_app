@@ -52,16 +52,14 @@ main > section > nav {
     justify-content: space-evenly;
 }
 
-.owner-edit-nav {
+.edit-nav {
     display: flex;
-    
-
+    align-items: center;
 }
 
-.owner-edit-nav > a {
-    align-self: center;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
+.edit-nav > a {
+   
+   
     margin-left: 0.83em;
 
 }
@@ -109,6 +107,25 @@ main > section > nav {
 }
 .new-pet-form > div > select {
     margin-left: 20px;
+}
+
+/* vets pages */
+
+.vet-list {
+    margin-bottom: 30px;
+}
+
+.vet {
+    display: flex;
+    align-items: center;
+}
+
+.vet > * {
+    margin-right: 10px;
+}
+
+#add-vet-button {
+    background-color: lightblue;
 }
 
 .form-item {
