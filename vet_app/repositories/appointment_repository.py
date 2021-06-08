@@ -85,6 +85,17 @@ def confirm_appointment(appointment):
     values = [appointment.id]
     run_sql(sql, values)
 
+def get_list_of_appointments_by_dates():
+    sql = '''select 	a.date, string_agg(a.id::VARCHAR, ',') as appointment_id_list
+            from appointments a
+            group by a.date
+            order by a.date'''
+    results = run_sql(sql)
+
+    return results
+
+
+
 
 
 

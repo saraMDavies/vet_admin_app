@@ -10,9 +10,9 @@ import datetime
 
 
 
-pet = pet_respository.select_by_id(13)
+# pet = pet_respository.select_by_id(13)
 
-print(pet.name)
+# print(pet.name)
 
 
 
@@ -31,36 +31,39 @@ print(pet.name)
 # appointment_repository.create(appointment)
 # print(appointment.description)
 
-appointment_repository.delete
+# appointment_repository.delete
 
-vet2 = vet_repository.select_by_id(4)
-pet2 = pet_respository.select_by_id(45)
+# vet2 = vet_repository.select_by_id(4)
+# pet2 = pet_respository.select_by_id(45)
 
-appointment2 = Appointment(datetime.date(2021, 6, 23), 15, "check up", vet2, pet2, True)
-appointment_repository.create(appointment2)
+# appointment2 = Appointment(datetime.date(2021, 6, 23), 15, "check up", vet2, pet2, True)
+# appointment_repository.create(appointment2)
 
-vet3 = vet_repository.select_by_id(2)
-pet3 = pet_respository.select_by_id(120)
+# vet3 = vet_repository.select_by_id(2)
+# pet3 = pet_respository.select_by_id(120)
 
-appointment3 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3, True)
-appointment_repository.create(appointment3)
+# appointment3 = Appointment(datetime.date(2021, 6, 15), 9, "vaccinations", vet3, pet3, True)
+# appointment_repository.create(appointment3)
 
-appointment4 = Appointment(datetime.date(2021, 6, 10), 2, "blood test", vet3, pet3)
-appointment_repository.create(appointment4)
-appointment4.confirmed = True
-appointment_repository.update_appointment(appointment4)
-# appointment_repository.update_appointment(appointment3)
+# appointment4 = Appointment(datetime.date(2021, 6, 10), 2, "blood test", vet3, pet3)
+# appointment_repository.create(appointment4)
+# appointment4.confirmed = True
+# appointment_repository.update_appointment(appointment4)
+# # appointment_repository.update_appointment(appointment3)
 
-# results = appointment_repository.select_all()
-# for row in results:
-#     print(row.__dict__)
+# # results = appointment_repository.select_all()
+# # for row in results:
+# #     print(row.__dict__)
 
-sage = pet_respository.select_by_id(3)
-print(sage.name)
+# sage = pet_respository.select_by_id(3)
+# print(sage.name)
 
-sage.vet.id = 9999
-pet_respository.update_pet(sage)
+# sage.vet.id = 9999
+# pet_respository.update_pet(sage)
 
+result = appointment_repository.get_list_of_appointments_by_dates()
+print(result[0]['date'])
+print(result[0]['appointment_id_list'])
 
 
 
