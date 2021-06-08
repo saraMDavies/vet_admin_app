@@ -25,7 +25,8 @@
     {% if owner_known %}
    
     <h4>Owner: {{owner.first_name}} {{owner.last_name}}</h4>
-    <input type="hidden" value = {{owner_id}} name = "owner_id">
+   
+    <input type="hidden" value = "{{owner.id}}" name = "owner_id">
 
     {% else %}
     <label for="owner_id">Owner</label>
