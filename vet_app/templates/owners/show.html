@@ -17,7 +17,8 @@
             {% for pet in pets %}
             <li class = "customer-pet">
                 <a class = "pet-link" href="/pets/{{pet.id}}">{{pet.name}}</a>
-                <a class="button-link" href="/appointments/new">Book an appointment for {{pet.name}}</a>
+                <a class="button-link" href="/appointments/new/{{pet.id}}">Book an appointment for {{pet.name}}</a>
+                
             </li>
             {% endfor %}
         </ul>
