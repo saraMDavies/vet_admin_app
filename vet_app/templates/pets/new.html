@@ -2,6 +2,11 @@
 
 {% block content %}
 
+{% if owner_known %}
+<h2>New pet for {{owner.first_name}} {{owner.last_name}}</h2>
+{% else %}
+<h2>New pet</h2>
+{% endif %}
 
 <form action="/pets/new" method="post">
 
@@ -12,11 +17,19 @@
     <label for="animal_category">Animal category</label>
     <input type="text" name = "animal_category">
 
+   
+    {% if owner_known %}
+   
+    <h4>Owner: {{owner.first_name}} {{owner.last_name}}</h4>
+    <input type="hidden" value = {{owner_id}} name = "owner_id">
+
+    {% else %}
     <label for="owner_id">Owner</label>
     <select name="owner_id">Owner
         {% for owner in owners %}
         <option value="{{owner.id}}">{{owner.last_name}}, {{owner.first_name}}</option>
         {% endfor %}
+    {% endif %}
     </select>
 
     <label for="vet_id">Vet</label>
@@ -31,6 +44,5 @@
 
 </form>
 
-new pet page
 
 {% endblock %}

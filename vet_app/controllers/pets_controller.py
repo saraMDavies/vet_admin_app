@@ -52,7 +52,17 @@ def new_pet_form():
     vets = vet_repository.select_all()
     owners = owner_repository.select_all()
 
-    return render_template('pets/new.html', owners = owners, vets = vets)
+    return render_template('pets/new.html', owners = owners, vets = vets, owner_known = False)
+
+@pets_blueprint.route('/pets/new/owner-id/<owner_id>')
+def new_pet_form_owner_known(owner_id):
+    owner = owner_repository.select_by_id(owner_id)
+    vets = vet_repository.select_all()
+
+    return render_template('pets/new.html', owner = owner, vets = vets, owner_known = True)
+
+
+
 
 @pets_blueprint.route('/pets/new', methods = ['POST'])
 def create_pet():
