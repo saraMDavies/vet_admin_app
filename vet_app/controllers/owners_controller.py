@@ -50,5 +50,7 @@ def create_new_owner():
     address = request.form['address']
     owner = Owner(first_name, last_name, telephone, address)
     owner_repository.create(owner)
+    owner_id = owner.id
+    pets = owner_repository.get_all_pets(owner_id)
 
-    return redirect('/owners')
+    return render_template('owners/show.html', owner = owner, pets = pets)
