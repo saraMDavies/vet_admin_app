@@ -37,3 +37,20 @@ def delete_vet(id):
     vet_repository.delete_by_id(id)
 
     return redirect('/vets')
+
+@vets_blueprint.route('/vets/<vet_id>/edit')
+def edit_vet_form(vet_id):
+    vet = vet_repository.select_by_id(vet_id)
+
+    return render_template('vets/edit.html', vet = vet)
+
+@vets_blueprint.route('/vets/<vet_id>/edit', methods = ['POST'])
+def update_vet(vet_id):
+    vet = vet_repository.select_by_id(vet_id)
+    vet.first_name = request.form['first_name']
+    vet.last_name = request.form['last_name']
+    vet_repository.update(vet)
+    pets = vet_repository.lists_pets(vet_id)
+    len_pets = len(pets)
+
+    return render_template('vets/show.html', vet = vet, pets = pets, len_pets = len_pets)

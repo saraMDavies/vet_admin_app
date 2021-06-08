@@ -82,6 +82,13 @@ def delete_by_id(vet_id):
     values = [vet_id]
     run_sql(sql_1, values)
 
+def update(vet):
+    sql = "UPDATE vets SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+    values = [vet.first_name, vet.last_name, vet.id]
+    run_sql(sql, values)
+
+
+
 def get_appointments(id):
     appointments = []
     sql = '''select a.id as appointment_id, a.date as appointment_date
