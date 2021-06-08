@@ -58,8 +58,10 @@ def confirm_appointment(app_id):
 def appointments_calendar():
     appointments = appointment_repository.select_all()
     calendar = Calendar(appointments)
+    diary = calendar.appointments_by_day()
 
-    return render_template('appointments/calendar.html', calendar = calendar)
+
+    return render_template('appointments/calendar.html', diary = diary)
     
 
 
