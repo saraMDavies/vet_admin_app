@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<h2>Appointments</h2>
-<h2><a href="/appointments/new">Create new appointment</a></h2>
+{% if vet != None %}
+<h2>Appointments for {{vet.first_name}} {{vet.last_name}}</h2>
+{% else %}
+<h2>All appointments</h2>
+{% endif %}
+
 
 {% for appointment in appointments %}
 <h3>Date: {{appointment.date}}</h3>

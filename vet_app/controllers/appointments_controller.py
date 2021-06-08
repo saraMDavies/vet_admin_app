@@ -11,7 +11,15 @@ appointments_blueprint = Blueprint("appointments", __name__)
 def list_all_appointments():
     appointments = appointment_repository.select_all()
 
-    return render_template('appointments/index.html', appointments = appointments)
+    return render_template('appointments/index.html', appointments = appointments, vet = None)
+    
+@appointments_blueprint.route('/appointments/<vet_id>')
+def appointments_for_vet(vet_id):
+    appointments = vet_repository.get_appointments(vet_id)
+    vet = vet_repository.select_by_id(vet_id)
+
+    return render_template('appointments/index.html', appointments = appointments, vet = vet)
+
 
 @appointments_blueprint.route('/appointments/new/<pet_id>')
 def new_appointment_form(pet_id):
