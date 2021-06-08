@@ -100,8 +100,9 @@ def update_pet(id):
     vet = vet_repository.select_by_id(vet_id)
     pet = Pet(name, dob, animal_category, owner, vet, notes, id)
     pet_respository.update_pet(pet)
+    
 
-    return redirect('/pets')
+    return render_template('pets/show.html', pet=pet)
 
 @pets_blueprint.route('/pets/novet/list', methods = ['POST'])
 def reassign_pets():
