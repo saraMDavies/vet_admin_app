@@ -30,17 +30,23 @@ header > a:link, header > a:visited {
 
 main {
     margin-left: 50px;
-    
+    display:    
 }
 
-.home-options {
+main > section {
+    border-style: solid;
+    border-color: black;
+    margin: 30px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+}
+
+main > section > nav {
     display: flex;
     justify-content: space-around;
 }
 
-.home-options {
-    
-}
+
 
 .pet-list {
     padding-top: 20px;

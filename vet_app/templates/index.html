@@ -3,21 +3,40 @@
 
 {% block content %}
 
-<p>details of the vet's</p>
+<section class="manage-appointments">
+    <h2>Manage appointments</h2>
+    <nav>
+    <a href="/customers">Search customers to book</a>
+    <a href="/appointments">View all appointments</a>
+    </nav>
 
-<div class="home-options">
+</section>
 
-    <h2>
-        <a href="/vets">Vets</a>
-    </h2>
-    <h2>
-        <a href="/pets">Pets</a>
-    </h2>
-    <h2>
-        <a href="/owners">Customers</a>
-    </h2>
-   
-</div>
+<section class="manage-vets">
+    <h2>Manage vets</h2>
+    <nav>
+    <a href="/vets">View/edit vets</a>
+    <a href="/vets/new">Add new vet</a>
+    </nav>
+</section>
+
+<section class="manage-customers">
+    <h2>Manage customer database</h2>
+    <nav>
+    <a href="/owners">View/edit customer details</a>
+    <a href="/owners/new">Add new customer</a>
+    </nav>
+</section>
+
+<section class="manage-pets">
+    <h2>Manage pet database</h2>
+    <nav>
+    <a href="/pets">View/edit pet details</a>
+    <a href="/pets/new">Add new pet</a>
+    </nav>
+</section>
+
+
 
 
 {% endblock %}
