@@ -98,11 +98,21 @@ main > section > nav {
     align-self: center;
 }
 
-
-
-
 .pet-list {
     padding-top: 20px;
+}
+
+/* pet pages  */
+
+.new-pet-form > div > input {
+    margin-left: 20px;
+}
+.new-pet-form > div > select {
+    margin-left: 20px;
+}
+
+.form-item {
+    margin: 10px;
 }
 
 .pet {

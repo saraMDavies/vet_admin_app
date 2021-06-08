@@ -8,16 +8,20 @@
 <h2>New pet</h2>
 {% endif %}
 
-<form action="/pets/new" method="post">
-
+<form class="new-pet-form" action="/pets/new" method="post">
+<div class="form-item">
     <label for="name">Name</label>
     <input type="text" name="name">
+</div>
+<div class="form-item">
     <label for="dob">DOB</label>
     <input type="date" name="dob">
+</div>
+<div class="form-item">
     <label for="animal_category">Animal category</label>
     <input type="text" name = "animal_category">
-
-   
+</div>
+<div class="form-item">
     {% if owner_known %}
    
     <h4>Owner: {{owner.first_name}} {{owner.last_name}}</h4>
@@ -31,13 +35,23 @@
         {% endfor %}
     {% endif %}
     </select>
-
+</div>
+<div class="form-item">
     <label for="vet_id">Vet</label>
     <select name="vet_id">
         {% for vet in vets %}
         <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
         {% endfor %}
     </select>
+</div>
+    
+    
+    
+
+   
+    
+
+    
 
 
     <button type="submit">Add pet</button>
