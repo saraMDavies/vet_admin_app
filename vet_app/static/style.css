@@ -30,10 +30,10 @@ header > a:link, header > a:visited {
 
 main {
     margin-left: 50px;
-    display:    
+       
 }
 
-main > section {
+.home-section {
     border-style: solid;
     border-color: black;
     margin: 30px;
@@ -51,6 +51,49 @@ main > section > nav {
     display: flex;
     justify-content: space-evenly;
 }
+
+.owner-edit-nav {
+    display: flex;
+    
+
+}
+
+.owner-edit-nav > a {
+    align-self: center;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-left: 0.83em;
+
+}
+
+.customer-pet {
+    margin: 20px;
+    display: flex;
+}
+
+.customer-pet > a {
+    margin-right: 30px;
+}
+
+.button-link {
+    text-decoration: none;
+    color: black;
+    border-color: black;
+    border-style: solid;
+    padding: 5px;
+    
+}
+
+.list-of-pets {
+    margin-bottom: 50px;
+}
+
+
+.pet-link {
+    align-self: center;
+}
+
+
 
 
 .pet-list {
@@ -95,6 +138,7 @@ footer {
     background-color: dodgerblue;
     color: white;
     padding: 10px;
+    margin-top: 50px;
 }
 
 footer > p, footer > h3 {

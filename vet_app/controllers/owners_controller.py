@@ -14,13 +14,6 @@ def owners_index():
 
     return render_template('owners/index.html', owners = owners, alphabet = alphabet)
 
-@owners_blueprint.route('/owners/<id>')
-def show_owner(id):
-    owner = owner_repository.select_by_id(id)
-    pets = owner_repository.get_all_pets(id)
-
-    return render_template('owners/show.html', owner = owner, pets = pets)
-
 
 @owners_blueprint.route('/owners/alpha/<letter>')
 def list_by_letter(letter):
@@ -30,3 +23,16 @@ def list_by_letter(letter):
     
 
     return render_template('owners/index.html', owners = owners, alphabet = alphabet)
+
+@owners_blueprint.route('/owners/<id>/edit')
+def edit_owner_form(id):
+    owner = owner_repository.select_by_id(id)
+
+    return render_template('owners/edit.html', owner = owner)
+
+@owners_blueprint.route('/owners/<id>')
+def show_owner(id):
+    owner = owner_repository.select_by_id(id)
+    pets = owner_repository.get_all_pets(id)
+
+    return render_template('owners/show.html', owner = owner, pets = pets)
