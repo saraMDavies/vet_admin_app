@@ -46,6 +46,11 @@ main > section > nav {
     justify-content: space-around;
 }
 
+/* Customer pages  */
+.alpha {
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 .pet-list {

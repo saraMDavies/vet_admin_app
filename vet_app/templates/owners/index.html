@@ -4,10 +4,14 @@
 {% block content %}
 
 <h2>Customer database</h2>
+<p>Select a letter to search alphabetically</p>
 
-{% for letter in alphabet %}
-<a href="/owners/alpha/{{letter}}">{{letter}}</a>
-{% endfor %}
+<div class="alpha">
+    {% for letter in alphabet %}
+    <a href="/owners/alpha/{{letter}}">{{letter}}</a>
+    {% endfor %}
+</div>
+
 
 
 <!-- <form action="/owners/alpha/?letter=B">
