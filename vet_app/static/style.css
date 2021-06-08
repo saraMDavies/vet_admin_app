@@ -66,13 +66,18 @@ main > section > nav {
 
 }
 
-.customer-pet {
+.customer-pets {
     margin: 20px;
-    display: flex;
+    
 }
 
 .customer-pet > a {
-    margin-right: 30px;
+    margin: 20px;
+}
+
+.customer-pet {
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
 }
 
 .button-link {

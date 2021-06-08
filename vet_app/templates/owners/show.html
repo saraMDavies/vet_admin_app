@@ -12,16 +12,21 @@
 <div class="list-of-pets">
     <h3>Pets:</h3>
 
-    <section class = customer-pet>
-        {% for pet in pets %}
-        <a class = "pet-link" href="/pets/{{pet.id}}">{{pet.name}}</a>
-        <a class="button-link" href="/appointments/new">Book an appointment for {{pet.name}}</a>
-        {% endfor %}
-    </section>
+ 
+        <ul class="customer-pets">
+            {% for pet in pets %}
+            <li class = "customer-pet">
+                <a class = "pet-link" href="/pets/{{pet.id}}">{{pet.name}}</a>
+                <a class="button-link" href="/appointments/new">Book an appointment for {{pet.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        
+  
     
 </div>
 
-<a class="button-link" href="/pets/new">Add a new pet for {{owner.first_name}} {{owner.last_name}}</a>
+<a class="button-link" href="/pets/new">Add a new pet for {{owner.first_name}}</a>
     
 
 
