@@ -40,8 +40,9 @@ def lists_pets(id):
                 '''
     values = [id]
     results = run_sql(sql, values)
+    sorted_results = sorted(results, key=lambda k: k['name'])
 
-    for row in results:
+    for row in sorted_results:
         vet = vet_repository.select_by_id(row['vet_id'])
         owner = owner_repository.select_by_id(row['owner_id'])
         pet = Pet(row['name'], row['dob'], row['animal_category'], owner, vet, row['notes'], row['id'])
