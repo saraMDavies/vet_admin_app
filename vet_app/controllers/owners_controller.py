@@ -21,15 +21,12 @@ def show_owner(id):
 
     return render_template('owners/show.html', owner = owner, pets = pets)
 
-# @owners_blueprint.route('/owners/alpha/?letter=B')
-# def get_alpha_owners():
-#     letter = request.form['letter']
-#     owners = owner_repository.get_by_letter(letter)
-
-#     return render_template('owners/index.html', owners = owners)
 
 @owners_blueprint.route('/owners/alpha/<letter>')
 def list_by_letter(letter):
     owners = owner_repository.get_by_letter(letter)
+    alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
-    return render_template('owners/index.html', owners = owners)
+    
+
+    return render_template('owners/index.html', owners = owners, alphabet = alphabet)
