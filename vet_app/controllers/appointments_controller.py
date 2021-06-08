@@ -62,6 +62,14 @@ def appointments_calendar():
 
 
     return render_template('appointments/calendar.html', diary = diary)
+
+@appointments_blueprint.route('/appointments/calendar/<vet_id>')
+def appointments_calendar_for_vet(vet_id):
+    appointments = vet_repository.get_appointments(vet_id)
+    calendar = Calendar(appointments)
+    diary = calendar.appointments_by_day()
+
+    return render_template('appointments/calendar.html', diary = diary)
     
 
 
