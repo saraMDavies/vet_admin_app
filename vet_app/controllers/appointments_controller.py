@@ -53,5 +53,12 @@ def confirm_appointment(app_id):
 
     return redirect('/appointments')
 
+@appointments_blueprint.route('/appointments/days')
+def get_calendar():
+    days = appointment_repository.get_list_of_appointments_by_dates()
+
+
+    return render_template('appointments/days.html', days = days)
+
 
 

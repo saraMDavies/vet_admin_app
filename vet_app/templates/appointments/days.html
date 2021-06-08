@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for day in days %}
+<h2>{{day.date}}</h2>
+{% for appointment in day.appointment_list %}
+<p>{{appointment}}</p>
+{% endfor %}
+{% endfor %}
+
+
+{% endblock %}

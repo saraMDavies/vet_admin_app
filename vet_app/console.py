@@ -62,8 +62,10 @@ import datetime
 # pet_respository.update_pet(sage)
 
 result = appointment_repository.get_list_of_appointments_by_dates()
-print(result[0]['date'])
-print(result[0]['appointment_id_list'])
+for day in result:
+    print(day.__dict__)
+
+
 
 
 

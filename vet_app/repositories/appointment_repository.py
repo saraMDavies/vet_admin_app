@@ -1,3 +1,4 @@
+from models.day_timetable import DayTimetable
 from flask.templating import render_template
 from models.vet import Vet
 from models.pet import Pet
@@ -86,13 +87,17 @@ def confirm_appointment(appointment):
     run_sql(sql, values)
 
 def get_list_of_appointments_by_dates():
+    days = []
     sql = '''select 	a.date, string_agg(a.id::VARCHAR, ',') as appointment_id_list
             from appointments a
             group by a.date
             order by a.date'''
     results = run_sql(sql)
 
-    return results
+    for row in results:
+        day = DayTimetable(row['date'], row['appointment_id_list'])
+        days.append(day)
+    return days
 
 
 
