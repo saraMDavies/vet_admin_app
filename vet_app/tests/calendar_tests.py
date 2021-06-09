@@ -172,5 +172,14 @@ class CalendarTest(unittest.TestCase):
             }
             ], calendar.appointments_this_week())
 
-    def test_gets_current_week_number(self):
-        self.assertEqual(23, self.calendar.get_current_week_days())
+    # def test_gets_current_week_number(self):
+    #     self.assertEqual(23, self.calendar.get_current_week_dates())
+
+    # def test_gets_monday_date_this_week(self):
+    #     self.assertEqual(datetime.date(2021,6,4), self.calendar.get_current_week_dates())
+
+    # def test_gets_tuesday_date_this_week(self):
+    #     self.assertEqual(datetime.date(2021,6,5), self.calendar.get_current_week_dates())
+
+    def test_gets_7_days_from_monday(self):
+        self.assertEqual([datetime.date(2021,6,7), datetime.date(2021,6,8), datetime.date(2021,6,9), datetime.date(2021,6,10), datetime.date(2021,6,11), datetime.date(2021,6,12), datetime.date(2021,6,13)], self.calendar.get_current_week_dates())

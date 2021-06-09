@@ -1,6 +1,7 @@
 import datetime
 from repositories import vet_repository
 
+
 class Calendar:
     def __init__(self, appointments):
         self.appointments = appointments
@@ -40,10 +41,19 @@ class Calendar:
                     day['appointments'].append(appointment) 
         return diary
 
-    def get_current_week_days(self):
+    def get_current_week_dates(self):
         today = datetime.date.today()
-        year, week_num, day = today.isocalendar()
-        return week_num
+        monday = today - datetime.timedelta(days=today.weekday())
+        tuesday = monday + datetime.timedelta(days=1)
+        wednesday = tuesday + datetime.timedelta(days=1)
+        thursday = wednesday + datetime.timedelta(days=1)
+        friday = thursday + datetime.timedelta(days=1)
+        saturday = friday + datetime.timedelta(days=1)
+        sunday = saturday + datetime.timedelta(days=1)
+        week = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+        return week
+        
+        
         
 
                 
