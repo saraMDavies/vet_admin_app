@@ -6,6 +6,8 @@ from models.appointment import Appointment
 from models.calendar import Calendar
 
 
+
+
 appointments_blueprint = Blueprint("appointments", __name__)
 
 @appointments_blueprint.route('/appointments')
@@ -37,9 +39,11 @@ def create_new_appointment(pet_id):
     vet = vet_repository.select_by_id(vet_id)
     appointment = Appointment(date, None, None, vet, pet)
     appointment_repository.create(appointment)
-    vet_appointments = vet_repository.get_appointments(vet_id)
+    appointments = vet_repository.get_appointments(vet_id)
+    calendar = Calendar(appointments)
+    diary = calendar.appointments_by_day()
 
-    return render_template('/appointments/diary.html', appointment = appointment, vet_appointments = vet_appointments)
+    return render_template('/appointments/diary.html', appointment = appointment, diary=diary)
 
 
 @appointments_blueprint.route('/appointments/confirm/<app_id>', methods = ['POST'])

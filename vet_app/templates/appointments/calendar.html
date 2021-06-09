@@ -11,9 +11,6 @@
         <p>Time: {{appointment.start_time}}</p>
         <p>Pet: {{appointment.pet.name}}</p>
         <p>Vet: {{appointment.vet.first_name}}, {{appointment.vet.last_name}}</p>
-        {% if appointment.id == app_id %}
-        <h3>New apppointment</h3>
-        {% endif %}
         <a href="/appointments/{{appointment.id}}/edit">Edit appointment time/date</a>
         <form action="/appointments/{{appointment.id}}/delete" method="post">
         <button type="submit">Cancel appointment</button>

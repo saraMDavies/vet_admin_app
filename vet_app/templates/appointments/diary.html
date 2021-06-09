@@ -4,12 +4,25 @@
 
 <h3>Appointment for {{appointment.pet.name}} on {{appointment.date}} with {{appointment.vet.first_name}} {{appointment.vet.last_name}}</h3>
 
-<h2>Other appointments that {{appointment.vet.first_name}} has</h2>
-{% for appointment in vet_appointments %}
-<p>Date: {{appointment.date}}</p>
-<p>Time: {{appointment.start_time}}</p>
-<p>Pet: {{appointment.pet.name}}</p>
+{% for day in diary %}
+    <h3>{{day['date']}}</h3>  
+    {% for appointment in day['appointments'] %}
+    <div class="diary-entry">
+        <p>Time: {{appointment.start_time}}</p>
+        <p>Pet: {{appointment.pet.name}}</p>
+        <p>Vet: {{appointment.vet.first_name}}, {{appointment.vet.last_name}}</p>
+        <a href="/appointments/{{appointment.id}}/edit">Edit appointment time/date</a>
+        <form action="/appointments/{{appointment.id}}/delete" method="post">
+        <button type="submit">Cancel appointment</button>
+        </form>
+    </div>
+        
+    {% endfor %}
+
+
 {% endfor %}
+
+
 
 <form action="/appointments/confirm/{{appointment.id}}" method="post">
 <label for="time">Time:</label>
