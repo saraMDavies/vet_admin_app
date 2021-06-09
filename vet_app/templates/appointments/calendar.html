@@ -15,7 +15,7 @@
         <h3>New apppointment</h3>
         {% endif %}
         <a href="/appointments/{{appointment.id}}/edit">Edit appointment time/date</a>
-        <form action="/appointments/{{appointment.id}}/delete">
+        <form action="/appointments/{{appointment.id}}/delete" method="post">
         <button type="submit">Cancel appointment</button>
         </form>
     </div>

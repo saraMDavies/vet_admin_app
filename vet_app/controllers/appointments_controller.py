@@ -55,8 +55,15 @@ def confirm_appointment(app_id):
     calendar = Calendar(appointments)
     diary = calendar.appointments_by_day()
 
+    return redirect('/appointments/calendar')
+
+@appointments_blueprint.route('/appointments/<id>/delete', methods = ['POST'])
+def delete_appointment(id):
+    appointment_repository.delete(id)
 
     return redirect('/appointments/calendar')
+    
+    
 
 @appointments_blueprint.route('/appointments/calendar')
 def appointments_calendar():
