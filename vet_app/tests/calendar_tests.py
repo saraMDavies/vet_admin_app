@@ -100,7 +100,7 @@ class CalendarTest(unittest.TestCase):
                 'date': datetime.date(2021,6,13),
                 'appointments': []
             }
-            ], calendar.appointments_in_week())
+            ], calendar.appointments_this_week())
 
 
     def test_returns_one_app_in_week(self):
@@ -135,7 +135,7 @@ class CalendarTest(unittest.TestCase):
                 'date': datetime.date(2021,6,13),
                 'appointments': []
             }
-            ], calendar.appointments_in_week())
+            ], calendar.appointments_this_week())
     
     def test_returns_two_app_one_day(self):
         appointment1 = Appointment(datetime.date(2021,6,8), 3, "check up", "Anna", "pet")
@@ -170,4 +170,7 @@ class CalendarTest(unittest.TestCase):
                 'date': datetime.date(2021,6,13),
                 'appointments': []
             }
-            ], calendar.appointments_in_week())
+            ], calendar.appointments_this_week())
+
+    def test_gets_current_week_number(self):
+        self.assertEqual(23, self.calendar.get_current_week_days())
