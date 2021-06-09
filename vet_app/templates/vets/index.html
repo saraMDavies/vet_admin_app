@@ -14,7 +14,7 @@
             <button type="submit">delete vet</button>
         </form>
         <h3><a href="/vets/{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</a></h3>
-        <a class="button-link" href="/appointments/{{vet.id}}">View {{vet.first_name}}'s diary</a>
+        <a class="button-link" href="/appointments/calendar/{{vet.id}}">View {{vet.first_name}}'s diary</a>
     </section>
     {% endif %}
     {% endfor %}

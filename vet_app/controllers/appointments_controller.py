@@ -51,8 +51,12 @@ def confirm_appointment(app_id):
     appointment.description = description
     appointment_repository.update_appointment(appointment)
     appointment_repository.confirm_appointment(appointment)
+    appointments = appointment_repository.select_all()
+    calendar = Calendar(appointments)
+    diary = calendar.appointments_by_day()
 
-    return render_template('appoointments/calendar.html', app_id = app_id)
+
+    return redirect('/appointments/calendar')
 
 @appointments_blueprint.route('/appointments/calendar')
 def appointments_calendar():
