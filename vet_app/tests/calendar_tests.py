@@ -137,3 +137,37 @@ class CalendarTest(unittest.TestCase):
             }
             ], calendar.appointments_in_week())
     
+    def test_returns_two_app_one_day(self):
+        appointment1 = Appointment(datetime.date(2021,6,8), 3, "check up", "Anna", "pet")
+        appointment2 = Appointment(datetime.date(2021,6,8), 2, "check up", "Anna", "pet")
+        calendar = Calendar([appointment1, appointment2])
+        self.assertEqual([
+            {
+                'date': datetime.date(2021,6,7),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,8),
+                'appointments': [appointment1, appointment2]
+            },
+            {
+                'date': datetime.date(2021,6,9),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,10),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,11),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,12),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,13),
+                'appointments': []
+            }
+            ], calendar.appointments_in_week())
