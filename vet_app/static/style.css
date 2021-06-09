@@ -131,6 +131,13 @@ main > section > nav {
 /* # appointment pages */
 .diary-entry {
     display: flex;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
+}
+
+.diary-entry > p {
+    margin: 15px;
 }
 
 .form-item {
