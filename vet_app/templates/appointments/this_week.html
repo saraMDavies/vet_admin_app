@@ -3,15 +3,28 @@
 {% block content %}
 
 {% for day in this_week %}
+    <h3>{{day['date']}}</h3>
+    {% for time in times %}
+        <div class="diary-entry">
+            <p>Time: {{time}}</p>
+            <p>Pet: </p>
+            <p>Vet: </p>
+        </div>
+    {% endfor %}
+{% endfor %}    
+
+
+<!-- ------------------------- -->
+
+
+{% for day in this_week %}
     <h3>{{day['date']}}</h3>  
     {% for appointment in day['appointments'] %}
     <div class="diary-entry">
         <p>Time: {{appointment.start_time}}</p>
         <p>Pet: {{appointment.pet.name}}</p>
         <p>Vet: {{appointment.vet.first_name}}, {{appointment.vet.last_name}}</p>
-        {% if appointment.id == app_id %}
-        <h3>New apppointment</h3>
-        {% endif %}
+        
         <a href="/appointments/edit">Edit appointment time/date</a>
         <form action="/appointments/{{appointment.id}}/delete">
         <button type="submit">Cancel appointment</button>

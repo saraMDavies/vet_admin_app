@@ -80,6 +80,15 @@ def appointments_this_week():
     appointments = appointment_repository.select_all()
     calendar = Calendar(appointments)
     this_week = calendar.appointments_this_week()
+    times = [9,10,11,12,13,14,15,16]
+
+    return render_template('appointments/this_week.html', this_week = this_week, times = times)
+
+@appointments_blueprint.route('/appointments/this-week/<vet_id>')
+def appointments_this_week_for_vet(vet_id):
+    appointments = vet_repository.get_appointments(vet_id)
+    calendar = Calendar(appointments)
+    this_week = calendar.appointments_this_week()
 
     return render_template('appointments/this_week.html', this_week = this_week)
     
