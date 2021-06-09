@@ -140,6 +140,12 @@ main > section > nav {
     margin: 15px;
 }
 
+/* customer pages  */
+
+.new-customer > div {
+    margin: 15px;;
+}
+
 .form-item {
     margin: 10px;
 }
