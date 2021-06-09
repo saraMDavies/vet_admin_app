@@ -33,6 +33,11 @@ class Calendar:
                 'appointments': []
             }
             diary.append(day)
+
+        for appointment in self.appointments:
+            for day in diary:
+                if day['date'] == appointment.date:
+                    day['appointments'].append(appointment) 
         return diary
 
                 

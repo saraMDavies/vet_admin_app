@@ -70,8 +70,8 @@ class CalendarTest(unittest.TestCase):
             ], calendar.appointments_by_day())
         
     def test_returns_all_days_in_week(self):
-            calendar = Calendar([])
-            self.assertEqual([
+        calendar = Calendar([])
+        self.assertEqual([
             {
                 'date': datetime.date(2021,6,7),
                 'appointments': []
@@ -79,6 +79,41 @@ class CalendarTest(unittest.TestCase):
             {
                 'date': datetime.date(2021,6,8),
                 'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,9),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,10),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,11),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,12),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,13),
+                'appointments': []
+            }
+            ], calendar.appointments_in_week())
+
+
+    def test_returns_one_app_in_week(self):
+        appointment = Appointment(datetime.date(2021,6,8), 3, "check up", "Anna", "pet")
+        calendar = Calendar([appointment])
+        self.assertEqual([
+            {
+                'date': datetime.date(2021,6,7),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,8),
+                'appointments': [appointment]
             },
             {
                 'date': datetime.date(2021,6,9),
