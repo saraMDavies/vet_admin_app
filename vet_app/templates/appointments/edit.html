@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/appointments/{{appointment.id}}/edit" method="post">
+    <label for="date" value={{appointment.date}}>Date:</label>
+    <input type="date" name="date">
+    <label for="pet_id" >Pet:</label>
+    <input type="text" value = {{appointment.pet.name}} readonly name = "pet_id">
+    <label for="vet_id">Vet:</label>
+    <select name="vet_id">
+        {% for vet in vets %}
+        {% if vet.id == appointment.pet.vet.id %}
+            <option value="{{vet.id}}" selected>{{vet.last_name}}, {{vet.first_name}}</option>
+        {% else %}
+            <option value="{{vet.id}}">{{vet.last_name}}, {{vet.first_name}}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    
+    <button type="submit">Check for vets' availability</button>
+    
+    </form>
+
+{% endblock %}

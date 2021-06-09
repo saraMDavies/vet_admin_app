@@ -14,7 +14,7 @@
         {% if appointment.id == app_id %}
         <h3>New apppointment</h3>
         {% endif %}
-        <a href="/appointments/edit">Edit appointment time/date</a>
+        <a href="/appointments/{{appointment.id}}/edit">Edit appointment time/date</a>
         <form action="/appointments/{{appointment.id}}/delete">
         <button type="submit">Cancel appointment</button>
         </form>

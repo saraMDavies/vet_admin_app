@@ -75,6 +75,24 @@ def appointments_calendar_for_vet(vet_id):
 
     return render_template('appointments/calendar.html', diary = diary)
     
+@appointments_blueprint.route('/appointments/<id>/edit')
+def get_edit_appointments_page(id):
+    appointment = appointment_repository.select_by_id(id)
+    vets = vet_repository.select_all()
 
+    return render_template('appointments/edit.html', appointment = appointment, vets = vets)
 
+@appointments_blueprint.route('/appointments/<id>/edit', methods = ['POST'])
+def edit_update_appointment_1(id):
+    appointment = appointment_repository.select_by_id(id)
+    date = request.form['date']
+    vet_id = request.form['vet_id']
+    vet = vet_repository.select_by_id(vet_id)
+    appointment.vet = vet
+    appointment.date = date
+    appointment_repository.update_appointment(appointment)
+    vet_appointments = vet_repository.get_appointments(vet_id)
+    appointment.confirmed = False
+
+    return render_template('appointments/diary.html', appointment = appointment, vet_appointments = vet_appointments)
 
