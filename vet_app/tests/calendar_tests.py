@@ -187,54 +187,69 @@ class CalendarTest(unittest.TestCase):
     def test_returns_empty_calendar_with_times(self):
         calendar = Calendar([])
         this_week = calendar.appointments_this_week()
+        times = [9]
         self.assertEqual(
             [{
                 'date': datetime.date(2021,6,7),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,8),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,9),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,10),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,11),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,12),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
             },
             {
                 'date': datetime.date(2021,6,13),
-                'slot': {
-                    'time': 9,
-                    'appointments': []
-                }
-            },
-            ], calendar.puts_appointments_in_times_for_week(this_week))
+                'schedule': [
+                    {
+                        'time': 9,
+                        'appointments': []
+                    }
+                ]
+            }
+            ], calendar.puts_appointments_in_times_for_week(this_week, times))
