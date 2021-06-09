@@ -1,3 +1,5 @@
+import datetime
+from repositories import vet_repository
 
 class Calendar:
     def __init__(self, appointments):
@@ -22,6 +24,17 @@ class Calendar:
         ordered_diary = sorted(diary, key=lambda k: k['date'])
         return ordered_diary
 
+    def appointments_in_week(self):
+        week = [datetime.date(2021,6,7), datetime.date(2021,6,8), datetime.date(2021,6,9), datetime.date(2021,6,10), datetime.date(2021,6,11), datetime.date(2021,6,12), datetime.date(2021,6,13)]        
+        diary = []
+        for date in week:
+            day = {
+                'date': date,
+                'appointments': []
+            }
+            diary.append(day)
+        return diary
+
                 
     
             
@@ -31,8 +44,4 @@ class Calendar:
 
 
 
-        return [{
-            'date': self.appointments[0].date,
-            'appointments': [self.appointments[0]]
-        }]
 

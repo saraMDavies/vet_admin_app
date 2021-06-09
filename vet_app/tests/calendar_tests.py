@@ -4,6 +4,7 @@ from models.appointment import Appointment
 from models.vet import Vet
 from models.pet import Pet
 from models.owner import Owner
+from repositories import appointment_repository
 import datetime
 
 class CalendarTest(unittest.TestCase):
@@ -67,4 +68,37 @@ class CalendarTest(unittest.TestCase):
 
             }
             ], calendar.appointments_by_day())
+        
+    def test_returns_all_days_in_week(self):
+            calendar = Calendar([])
+            self.assertEqual([
+            {
+                'date': datetime.date(2021,6,7),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,8),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,9),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,10),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,11),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,12),
+                'appointments': []
+            },
+            {
+                'date': datetime.date(2021,6,13),
+                'appointments': []
+            }
+            ], calendar.appointments_in_week())
     
