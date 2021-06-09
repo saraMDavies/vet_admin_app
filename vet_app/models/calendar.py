@@ -4,8 +4,9 @@ class Calendar:
         self.appointments = appointments
 
     def appointments_by_day(self):
+        ordered_appointments = sorted(self.appointments, key=lambda k: k.start_time)
         diary = []
-        for appointment in self.appointments:
+        for appointment in ordered_appointments:
             placed = False
             for day in diary:
                 if appointment.date == day['date']:
