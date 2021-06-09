@@ -10,7 +10,7 @@ from repositories import appointment_repository, pet_respository, vet_repository
 
 def select_all():
     vets = []
-    sql = "SELECT * FROM vets"
+    sql = "SELECT * FROM vets WHERE id != 9999"
     results = run_sql(sql)
 
     for row in results:
