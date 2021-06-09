@@ -134,9 +134,10 @@ main > section > nav {
     border-color: black;
     border-style: solid;
     margin: 10px;
+    align-items: center;
 }
 
-.diary-entry > p {
+.diary-entry > * {
     margin: 15px;
 }
 

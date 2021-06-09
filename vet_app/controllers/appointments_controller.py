@@ -52,7 +52,7 @@ def confirm_appointment(app_id):
     appointment_repository.update_appointment(appointment)
     appointment_repository.confirm_appointment(appointment)
 
-    return redirect('/appointments')
+    return render_template('appoointments/calendar.html', app_id = app_id)
 
 @appointments_blueprint.route('/appointments/calendar')
 def appointments_calendar():
