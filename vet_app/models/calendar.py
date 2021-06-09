@@ -52,6 +52,31 @@ class Calendar:
         sunday = saturday + datetime.timedelta(days=1)
         week = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
         return week
+
+    def puts_appointments_in_times_for_week(self, diary):
+        week = self.get_current_week_dates()
+        week_schedule = []
+        for date in week:
+            day_schedule = {
+                'date': date,
+                'times': {
+                    '9': [],
+                    '10': [],
+                    '11': [],
+                    '12': [],
+                    '13': [],
+                    '14': [],
+                    '15': [],
+                    '16': []
+                }
+            }
+            week_schedule.append(day_schedule)
+        return week_schedule
+            
+            
+        
+
+    
         
         
         

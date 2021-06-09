@@ -183,3 +183,58 @@ class CalendarTest(unittest.TestCase):
 
     def test_gets_7_days_from_monday(self):
         self.assertEqual([datetime.date(2021,6,7), datetime.date(2021,6,8), datetime.date(2021,6,9), datetime.date(2021,6,10), datetime.date(2021,6,11), datetime.date(2021,6,12), datetime.date(2021,6,13)], self.calendar.get_current_week_dates())
+
+    def test_returns_empty_calendar_with_times(self):
+        calendar = Calendar([])
+        this_week = calendar.appointments_this_week()
+        self.assertEqual(
+            [{
+                'date': datetime.date(2021,6,7),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,8),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,9),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,10),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,11),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,12),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            {
+                'date': datetime.date(2021,6,13),
+                'slot': {
+                    'time': 9,
+                    'appointments': []
+                }
+            },
+            ], calendar.puts_appointments_in_times_for_week(this_week))
