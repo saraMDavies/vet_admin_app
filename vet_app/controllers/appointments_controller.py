@@ -74,6 +74,14 @@ def appointments_calendar_for_vet(vet_id):
     diary = calendar.appointments_by_day()
 
     return render_template('appointments/calendar.html', diary = diary)
+
+@appointments_blueprint.route('/appointments/this-week')
+def appointments_this_week():
+    appointments = appointment_repository.select_all()
+    calendar = Calendar(appointments)
+    this_week = calendar.appointments_this_week()
+
+    return render_template('appointments/this_week.html', this_week = this_week)
     
 
 

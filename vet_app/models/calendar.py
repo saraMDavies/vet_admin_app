@@ -26,7 +26,7 @@ class Calendar:
         return ordered_diary
 
     def appointments_this_week(self):
-        week = [datetime.date(2021,6,7), datetime.date(2021,6,8), datetime.date(2021,6,9), datetime.date(2021,6,10), datetime.date(2021,6,11), datetime.date(2021,6,12), datetime.date(2021,6,13)]        
+        week = self.get_current_week_dates()
         diary = []
         for date in week:
             day = {
