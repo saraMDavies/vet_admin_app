@@ -1,5 +1,8 @@
 # code_clan_python_project
 
+
+![](short_gif_demo.gif)
+
 ## A web app project built in python3 with Flask to emulate a vet's surgery system.  Dealing with vets, pets, owners, and appointments.
 ### to run..
 1. create db
